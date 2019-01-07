@@ -9,6 +9,8 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 /**
@@ -18,17 +20,15 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+
   public static WPI_TalonSRX driveTrainFrontLeftMotor = new WPI_TalonSRX(1);
   public static WPI_TalonSRX driveTrainFrontRightMotor = new WPI_TalonSRX(2);
   public static WPI_TalonSRX driveTrainBackLeftMotor = new WPI_TalonSRX(3);
   public static WPI_TalonSRX driveTrainBackRightMotor = new WPI_TalonSRX(4);
   public static MecanumDrive driveTrainMecanum = new MecanumDrive(driveTrainFrontLeftMotor, driveTrainBackLeftMotor, driveTrainFrontRightMotor, driveTrainBackRightMotor);
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+  
+  //the following stuff is for a standard arcade drive for use when testing on 2018 bot
+  private static SpeedControllerGroup driveTrainLeftMotorGroup = new SpeedControllerGroup(driveTrainFrontLeftMotor, driveTrainBackLeftMotor);
+  private static SpeedControllerGroup driveTrainRightMotorGroup = new SpeedControllerGroup(driveTrainFrontRightMotor, driveTrainBackRightMotor);
+  public static DifferentialDrive driveTrainDifferentialDrive = new DifferentialDrive(driveTrainLeftMotorGroup, driveTrainRightMotorGroup);
 }

@@ -29,5 +29,7 @@ public class DriveTrain extends Subsystem {
 
   public void drive(Joystick joystick){
     RobotMap.driveTrainMecanum.driveCartesian(joystick.getY(), joystick.getX(), joystick.getZ());
+    //if using last year's robot, comment the line above and uncomment the line below
+    // RobotMap.driveTrainDifferentialDrive.arcadeDrive(joystick.getY(), joystick.getZ());
   }
 }
