@@ -21,15 +21,15 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
  */
 public class RobotMap {
 
-  public static WPI_TalonSRX driveTrainFrontRightMotor = new WPI_TalonSRX(1);
-  public static WPI_TalonSRX driveTrainBackRightMotor = new WPI_TalonSRX(2);
-  public static WPI_TalonSRX driveTrainFrontLeftMotor = new WPI_TalonSRX(3);
-  public static WPI_TalonSRX driveTrainBackLeftMotor = new WPI_TalonSRX(4);
+  public static final WPI_TalonSRX DRIVE_TRAIN_FRONT_RIGHT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_FRONT_RIGHT);
+  public static final WPI_TalonSRX DRIVE_TRAIN_BACK_RIGHT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_BACK_RIGHT);
+  public static final WPI_TalonSRX DRIVE_TRAIN_FRONT_LEFT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_FRONT_LEFT);
+  public static final WPI_TalonSRX DRIVE_TRAIN_BACK_LEFT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_BACK_LEFT);
   
-  public static MecanumDrive driveTrainMecanum = new MecanumDrive(driveTrainFrontLeftMotor, driveTrainBackLeftMotor, driveTrainFrontRightMotor, driveTrainBackRightMotor);
+  public static final MecanumDrive DRIVE_TRAIN_MECANUM = new MecanumDrive(DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR, DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
   
   //the following stuff is for a standard arcade drive for use when testing on 2018 bot
-  private static SpeedControllerGroup driveTrainLeftMotorGroup = new SpeedControllerGroup(driveTrainFrontLeftMotor, driveTrainBackLeftMotor);
-  private static SpeedControllerGroup driveTrainRightMotorGroup = new SpeedControllerGroup(driveTrainFrontRightMotor, driveTrainBackRightMotor);
-  public static DifferentialDrive driveTrainDifferentialDrive = new DifferentialDrive(driveTrainLeftMotorGroup, driveTrainRightMotorGroup);
+  private static final SpeedControllerGroup DRIVE_TRAIN_LEFT_MOTOR_GROUP = new SpeedControllerGroup(DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR);
+  private static final SpeedControllerGroup DRIVE_TRAIN_RIGHT_MOTOR_GROUP = new SpeedControllerGroup(DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
+  public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
 }
