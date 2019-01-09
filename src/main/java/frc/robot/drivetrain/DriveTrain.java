@@ -5,13 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.drivetrain;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveByJoystick;
+import frc.robot.drivetrain.DriveByJoystick;
  // is this correct?
 /**
  * Add your docs here.
