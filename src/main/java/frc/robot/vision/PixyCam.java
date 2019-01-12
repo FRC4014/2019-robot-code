@@ -27,6 +27,12 @@ public class PixyCam extends Subsystem {
 
 	public void testPixy() {
 		for (int i=1; i < 8; i++) {
+      try {
+        packet1[i - 1] = pixy.readPacket(i);
+      } catch (PixyException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
 			if (packet1[i-1] == null) {
 				System.out.println("id"+i+"is reporting null");
 			} else {

@@ -22,6 +22,7 @@ public class PixyI2C {
 
 	public PixyI2C(String id, I2C argPixy, PixyPacket[] argPixyPacket, PixyException argPixyException,
 			PixyPacket argValues) {
+        System.out.println("begin pixyI2C");
 		pixy = argPixy;
 		packets = argPixyPacket;
 		pExc = argPixyException;
@@ -46,6 +47,7 @@ public class PixyI2C {
 	// in
 	// pixymon you are trying to get data for
 	public PixyPacket readPacket(int Signature) throws PixyException {
+        System.out.println("reading the packet");
 		int Checksum;
 		int Sig;
 		byte[] rawData = new byte[32];
@@ -65,7 +67,7 @@ public class PixyI2C {
 		for (int i = 0; i <= 16; i++) {
 			int syncWord = cvt(rawData[i + 1], rawData[i + 0]); // Parse first 2
 																// bytes
-			if (syncWord == 0xaa55) { // Check is first 2 bytes equal a "sync
+			if (syncWord == 0) { // Check is first 2 bytes equal a "sync
 										// word", which indicates the start of a
 										// packet of valid data
 				syncWord = cvt(rawData[i + 3], rawData[i + 2]); // Parse the
@@ -78,9 +80,10 @@ public class PixyI2C {
 				Checksum = cvt(rawData[i + 5], rawData[i + 4]);
 				Sig = cvt(rawData[i + 7], rawData[i + 6]);
 				if (Sig <= 0 || Sig > packets.length) {
+                    System.out.println("that packets thing broke");;
 					break;
 				}
-
+                System.out.println("lookig at that packets bit on I2C");
 				packets[Sig - 1] = new PixyPacket();
 				packets[Sig - 1].X = cvt(rawData[i + 9], rawData[i + 8]);
 				packets[Sig - 1].Y = cvt(rawData[i + 11], rawData[i + 10]);
@@ -94,8 +97,11 @@ public class PixyI2C {
 					throw pExc;
 				}
 				break;
-			} else
+            } else {
+                System.out.println("Something went wrong w/ the sync word " + syncWord);
 				SmartDashboard.putNumber("syncword: ", syncWord);
+            }
+                
 		}
 		// Assigns our packet to a temp packet, then deletes data so that we
 		// dont return old data
@@ -158,7 +164,7 @@ public class PixyI2C {
 	private final int MAX_SIGNATURES = 7;
 	private final int OBJECT_SIZE = 14;
 	private final int START_WORD = 0xaa55;
-	private final int START_WORD_CC = 0xaa5;
+	private final int START_WORD_CC = 0xaa56;
 	private final int START_WORD_X = 0x55aa;
 
 	public boolean getStart() {
