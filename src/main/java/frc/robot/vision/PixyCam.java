@@ -30,10 +30,10 @@ public class PixyCam extends Subsystem {
 			if (packet1[i-1] == null) {
 				System.out.println("id"+i+"is reporting null");
 			} else {
-				System.out.println("pixy x value for id "+i+": " + packet1[i-1].X);
-				System.out.println("pixy y value for id "+i+": " + packet1[i-1].Y);
-				System.out.println("pixy width value for id "+i+": " + packet1[i-1].Width);
-				System.out.println("pixy height value for id "+i+": " + packet1[i-1].Height);
+				System.out.println("pixy x value for id "+i+": " + packet1[i-1].getX());
+				System.out.println("pixy y value for id "+i+": " + packet1[i-1].getY());
+				System.out.println("pixy width value for id "+i+": " + packet1[i-1].getWidth());
+				System.out.println("pixy height value for id "+i+": " + packet1[i-1].getHeight());
 			}
 		} 
 	}

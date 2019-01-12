@@ -82,14 +82,14 @@ public class PixyI2C {
 				}
 
 				packets[Sig - 1] = new PixyPacket();
-				packets[Sig - 1].X = cvt(rawData[i + 9], rawData[i + 8]);
-				packets[Sig - 1].Y = cvt(rawData[i + 11], rawData[i + 10]);
-				packets[Sig - 1].Width = cvt(rawData[i + 13], rawData[i + 12]);
-				packets[Sig - 1].Height = cvt(rawData[i + 15], rawData[i + 14]);
+				packets[Sig - 1].setX(cvt(rawData[i + 9], rawData[i + 8]));
+				packets[Sig - 1].setY(cvt(rawData[i + 11], rawData[i + 10]));
+				packets[Sig - 1].setWidth(cvt(rawData[i + 13], rawData[i + 12]));
+				packets[Sig - 1].setHeight(cvt(rawData[i + 15], rawData[i + 14]));
 				// Checks whether the data is valid using the checksum *This if
 				// block should never be entered*
-				if (Checksum != Sig + packets[Sig - 1].X + packets[Sig - 1].Y + packets[Sig - 1].Width
-						+ packets[Sig - 1].Height) {
+				if (Checksum != Sig + packets[Sig - 1].getX() + packets[Sig - 1].getY() + packets[Sig - 1].getWidth()
+						+ packets[Sig - 1].getHeight()) {
 					packets[Sig - 1] = null;
 					throw pExc;
 				}
@@ -139,16 +139,16 @@ public class PixyI2C {
 			return null;
 		}
 		PixyPacket block = new PixyPacket();
-		block.Signature = cvt(data[1], data[0]);
-		if (block.Signature <= 0 || block.Signature > 7) {
+		block.setSignature(cvt(data[1], data[0]));
+		if (block.getSignature() <= 0 || block.getSignature() > 7) {
 			return null;
 		}
-		block.X = cvt(data[3], data[2]);
-		block.Y = cvt(data[5], data[4]);
-		block.Width = cvt(data[7], data[6]);
-		block.Height = cvt(data[9], data[8]);
+		block.setX(cvt(data[3], data[2]));
+		block.setY(cvt(data[5], data[4]));
+		block.setWidth(cvt(data[7], data[6]));
+		block.setHeight(cvt(data[9], data[8]));
 
-		int sum = block.Signature + block.X + block.Y + block.Width + block.Height;
+		int sum = block.getSignature() + block.getX() + block.getY() + block.getWidth() + block.getHeight();
 		if (sum != checksum) {
 			return null;
 		}
