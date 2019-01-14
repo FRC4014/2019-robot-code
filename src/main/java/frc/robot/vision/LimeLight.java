@@ -39,4 +39,13 @@ public class LimeLight extends Subsystem {
     System.out.print(" width= " + width);
     System.out.print(" height= " + height);
   }
+  public double angle(double heightDifference, double cameraAngle){
+    double distance = heightDifference / Math.tan(cameraAngle + tx.getDouble(0.0));
+    double beta = (41 * twidth.getDouble(0.0)/320);
+    double angle = 90 - Math.asin((distance * Math.sin(beta))/26.627);
+    return angle;
+  }
+  public double xOffset(){
+    return tx.getDouble(0.0);
+  }
 }
