@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.autonomous.AutonomousButtons;
 import frc.robot.drivetrain.DriveByJoystick;
 import frc.robot.drivetrain.DriveTrain;
 import frc.robot.vision.LimeLight;
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static DriveTrain driveTrain;
   public static LimeLight limeLight;
+  public static AutonomousButtons autonomousButtons;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -40,6 +42,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     driveTrain = new DriveTrain(oi);
     limeLight = new LimeLight();
+    autonomousButtons = new AutonomousButtons(oi, limeLight);
     m_chooser.setDefaultOption("Default Auto", new DriveByJoystick(driveTrain, oi));
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

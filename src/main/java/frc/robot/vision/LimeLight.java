@@ -25,7 +25,7 @@ public class LimeLight extends Subsystem {
 
   @Override
   public void initDefaultCommand() { // we probably won't want a default command for this by the end of build season, this is just for testing
-    setDefaultCommand(new LookPut(this));
+    // setDefaultCommand(new LookPut(this));
   }
   public void printImage(){
     double x = tx.getDouble(0.0);
