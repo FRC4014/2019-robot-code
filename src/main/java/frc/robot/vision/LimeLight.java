@@ -42,7 +42,8 @@ public class LimeLight extends Subsystem {
   public double angle(double heightDifference, double cameraAngle){
     double distance = heightDifference / Math.tan(cameraAngle + tx.getDouble(0.0));
     double beta = (41 * twidth.getDouble(0.0)/320);
-    double angle = 90 - Math.asin((distance * Math.sin(beta))/26.627);
+    double angleDistance = distance / Math.cos(Math.abs(tx.getDouble(0.0)) - Math.abs(beta/2));
+    double angle = 90 - Math.asin((angleDistance * Math.sin(beta))/26.627);
     return angle;
   }
   public double xOffset(){
