@@ -63,12 +63,13 @@ public class AlignByVision extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return (acceptableAngle && acceptableX);
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, 0, 0);
   }
 
 
