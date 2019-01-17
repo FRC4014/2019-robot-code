@@ -19,8 +19,9 @@ public class LimeLight extends Subsystem {
   private NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   private NetworkTableEntry tx = table.getEntry("tx");
   private NetworkTableEntry ty = table.getEntry("ty");
-  private NetworkTableEntry twidth = table.getEntry("thoriz");
+  private NetworkTableEntry twidth = table.getEntry("tlong");
   private NetworkTableEntry theight = table.getEntry("tvert");
+  private NetworkTableEntry tarea = table.getEntry("ta");
 
 
   @Override
@@ -28,22 +29,37 @@ public class LimeLight extends Subsystem {
     // setDefaultCommand(new LookPut(this));
   }
   public void printImage(){
-    double x = tx.getDouble(0.0);
-    double y = ty.getDouble(0.0);
+    double x = Math.toRadians(tx.getDouble(0.0));
+    double y = Math.toRadians(ty.getDouble(0.0));
     double width = twidth.getDouble(0.0);
     double height = theight.getDouble(0.0);
+    double area = tarea.getDouble(0.0);
 
-    System.out.print("Limelight");
-    System.out.print(" x= " + x);
-    System.out.print(" y= " + y);
-    System.out.print(" width= " + width);
-    System.out.print(" height= " + height);
+    double distance = 12.125 / Math.tan(y);
+    double beta = (41 * width/320);
+    double angleDistance = distance / Math.cos(Math.abs(x - Math.abs(beta/2)));
+    double angle = 90 - Math.asin((angleDistance * Math.sin(beta))/14.627);
+    double idealBeta = Math.toDegrees(2 * Math.atan(7.336/distance));
+    double offBeta = Math.abs(idealBeta - beta);
+    
+    System.out.print("y= " + ty.getDouble(0.0));
+    System.out.print(" Distance= " + distance);
+    System.out.print(" beta=" + beta);
+    System.out.print(" ideal Beta= " + idealBeta);
+    System.out.println(" off Beta= " + offBeta);
+
+    // System.out.print("Limelight");
+    // System.out.print(" x= " + x);
+    // System.out.print(" y= " + y);
+    // System.out.print(" width= " + width);
+    // System.out.println(" height= " + height);
   }
   public double angle(double heightDifference, double cameraAngle){
-    double distance = heightDifference / Math.tan(cameraAngle + tx.getDouble(0.0));
+    double distance = heightDifference / Math.tan(cameraAngle + ty.getDouble(0.0));
     double beta = (41 * twidth.getDouble(0.0)/320);
     double angleDistance = distance / Math.cos(Math.abs(tx.getDouble(0.0)) - Math.abs(beta/2));
-    double angle = 90 - Math.asin((angleDistance * Math.sin(beta))/26.627);
+    double angle = 90 - Math.asin((angleDistance * Math.sin(beta))/14.627);
+    System.out.println(angle);
     return angle;
   }
   public double xOffset(){
