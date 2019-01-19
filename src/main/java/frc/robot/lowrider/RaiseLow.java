@@ -26,7 +26,7 @@ public class RaiseLow extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100){
+    if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100 && Robot.lowRider.ultraSonicDistance()){
       if (Robot.lowRider.checkFrontSolenoid()){
         Robot.lowRider.raiseLowFront();
         initTimeStamp = System.currentTimeMillis();

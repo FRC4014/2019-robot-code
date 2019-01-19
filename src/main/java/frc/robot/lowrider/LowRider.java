@@ -23,6 +23,9 @@ public class LowRider extends Subsystem {
   @Override
   public void initDefaultCommand() {
   }
+  public boolean ultraSonicDistance() {
+    return (RobotMap.ultra.getRangeInches() < 5);
+  }
   public boolean checkFrontSolenoid(){
     return (RobotMap.FRONT_LOW_SOLENOID.get() == DoubleSolenoid.Value.kForward);
   }

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -50,9 +51,12 @@ public class RobotMap {
   public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid (2, 5);
   public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid (3, 4);
 
+  public static Ultrasonic ultra = new Ultrasonic(1, 1);
+
   public static void init(){
     NAVX.reset();
     LEFT_ENCODER.setDistancePerPulse(distancePerPulse);
     RIGHT_ENCODER.setDistancePerPulse(distancePerPulse);
+    ultra.setAutomaticMode(true);
   }
 }
