@@ -51,12 +51,18 @@ public class RobotMap {
   public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid (2, 5);
   public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid (3, 4);
 
-  public static Ultrasonic ultra = new Ultrasonic(1, 1);
+  public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(1, 1);
+  public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(2, 2);
+  public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 3);
+  public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(4, 4);
 
   public static void init(){
     NAVX.reset();
     LEFT_ENCODER.setDistancePerPulse(distancePerPulse);
     RIGHT_ENCODER.setDistancePerPulse(distancePerPulse);
-    ultra.setAutomaticMode(true);
+    FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
+    FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
+    BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);
+    BACK_LEFT_ULTRASONIC.setAutomaticMode(true);
   }
 }

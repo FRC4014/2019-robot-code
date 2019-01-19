@@ -10,6 +10,7 @@ package frc.robot.lowrider;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+
 public class RaiseHigh extends Command {
 
   private long initTimeStamp;
@@ -28,11 +29,11 @@ public class RaiseHigh extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100 && Robot.lowRider.ultraSonicDistance()){
+    if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100 && Robot.lowRider.isFrontNearFloor()){
       if (Robot.lowRider.checkFrontSolenoid()){
         Robot.lowRider.raiseHighFront();
         initTimeStamp = System.currentTimeMillis();
-      } else {
+      } else if (Robot.lowRider.isBackNearFloor()){
         Robot.lowRider.raiseHighBack();
       }
     }
