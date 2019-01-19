@@ -10,8 +10,10 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -44,7 +46,10 @@ public class RobotMap {
   public static Encoder LEFT_ENCODER = new Encoder(DPIO.LEFT_ENCODER_A_CHANNEL, DPIO.LEFT_ENCODER_B_CHANNEL, false, EncodingType.k4X);
   public static Encoder RIGHT_ENCODER = new Encoder(DPIO.RIGHT_ENCODER_A_CHANNEL, DPIO.RIGHT_ENCODER_B_CHANNEL, true, EncodingType.k4X);
 
-  
+  public static DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(0, 7);
+  public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid (1, 6);
+  public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid (2, 5);
+  public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid (3, 4);
 
   public static void init(){
     NAVX.reset();
