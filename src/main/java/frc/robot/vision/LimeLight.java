@@ -20,8 +20,8 @@ public class LimeLight extends Subsystem {
   private NetworkTableEntry tx = table.getEntry("tx");
   private NetworkTableEntry ty = table.getEntry("ty");
   private NetworkTableEntry twidth = table.getEntry("tlong");
-  private NetworkTableEntry theight = table.getEntry("tvert");
-  private NetworkTableEntry tarea = table.getEntry("ta");
+  // private NetworkTableEntry theight = table.getEntry("tvert");
+  // private NetworkTableEntry tarea = table.getEntry("ta");
 
 
   @Override
@@ -32,8 +32,8 @@ public class LimeLight extends Subsystem {
     double x = Math.toRadians(tx.getDouble(0.0));
     double y = Math.toRadians(ty.getDouble(0.0));
     double width = twidth.getDouble(0.0);
-    double height = theight.getDouble(0.0);
-    double area = tarea.getDouble(0.0);
+    // double height = theight.getDouble(0.0);
+    // double area = tarea.getDouble(0.0);
 
     double distance = 12.125 / Math.tan(y);
     double beta = (41 * width/320);
@@ -42,25 +42,26 @@ public class LimeLight extends Subsystem {
     double idealBeta = Math.toDegrees(2 * Math.atan(7.336/distance));
     double offBeta = Math.abs(idealBeta - beta);
     
-    System.out.print("y= " + ty.getDouble(0.0));
+    System.out.print("angle= " + angle);
     System.out.print(" Distance= " + distance);
     System.out.print(" beta=" + beta);
     System.out.print(" ideal Beta= " + idealBeta);
     System.out.println(" off Beta= " + offBeta);
 
-    // System.out.print("Limelight");
-    // System.out.print(" x= " + x);
-    // System.out.print(" y= " + y);
-    // System.out.print(" width= " + width);
-    // System.out.println(" height= " + height);
   }
   public double angle(double heightDifference, double cameraAngle){
     double distance = heightDifference / Math.tan(cameraAngle + ty.getDouble(0.0));
     double beta = (41 * twidth.getDouble(0.0)/320);
-    double angleDistance = distance / Math.cos(Math.abs(tx.getDouble(0.0)) - Math.abs(beta/2));
-    double angle = 90 - Math.asin((angleDistance * Math.sin(beta))/14.627);
-    System.out.println(angle);
-    return angle;
+    double idealBeta = Math.toDegrees(2 * Math.atan(7.336/distance));
+    double signGuess = tx.getDouble(0.0)/Math.abs(tx.getDouble(0.0));
+    double offBeta = 0;
+      if (beta > idealBeta){
+        offBeta = 0;
+      } else {
+        offBeta = idealBeta - beta;
+      }
+    double offBetaGuess = offBeta * signGuess;
+    return offBetaGuess;
   }
   public double xOffset(){
     return tx.getDouble(0.0);

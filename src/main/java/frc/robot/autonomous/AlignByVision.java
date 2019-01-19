@@ -17,8 +17,8 @@ public class AlignByVision extends Command {
   private double angleIntegral , xIntegral , previousAngleError, previousXError = 0;
   private boolean acceptableAngle =  false;
   private boolean acceptableX = false;
-  private float angleTolerance = 5; //Placeholder
-  private float xTolerance = 2; //Placeholder
+  private double angleTolerance = .1; //Placeholder
+  private double xTolerance = 2; //Placeholder
   private final LimeLight limeLight;
   
   private double heightDifference = 1;
@@ -54,6 +54,8 @@ public class AlignByVision extends Command {
       double derivative = (correctionX - previousXError) / .02;
       xRCW = (p * correctionX) + (i * xIntegral) + (d * derivative);
     }
+    System.out.print("Angle RCW = " + angleRCW);
+    System.out.println(" x RCW = " + xRCW);
     RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, xRCW, angleRCW);
 
     previousAngleError = correctionAngle;
