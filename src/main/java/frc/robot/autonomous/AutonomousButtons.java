@@ -7,17 +7,12 @@
 
 package frc.robot.autonomous;
 
-import frc.robot.OI;
-import frc.robot.vision.LimeLight;
+import frc.robot.Robot;
 import frc.robot.vision.LookPut;
 
 public class AutonomousButtons {
-    OI oi;
-    LimeLight limeLight;
-    public AutonomousButtons (OI oi, LimeLight limeLight){
-        this.oi = oi;
-        this.limeLight = limeLight;
-        oi.alignButton.whenPressed(new AlignByVision(limeLight));
-        oi.lookButton.whenPressed(new LookPut(limeLight));
+    public AutonomousButtons (){
+        Robot.oi.alignButton.whenPressed(new AlignByVision(Robot.limeLight));
+        Robot.oi.lookButton.whenPressed(new LookPut(Robot.limeLight));
     }
 }

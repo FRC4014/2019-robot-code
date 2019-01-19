@@ -8,24 +8,18 @@
 package frc.robot.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
-import frc.robot.drivetrain.DriveTrain;
+import frc.robot.Robot;
 
 public class DriveByJoystick extends Command {
 
-  private final DriveTrain driveTrain;
-  private final OI oi;
-
-  public DriveByJoystick(DriveTrain driveTrain, OI oi) {
-    this.oi = oi;
-    this.driveTrain = driveTrain;
-    requires(driveTrain);
+  public DriveByJoystick() {
+    requires(Robot.driveTrain);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    driveTrain.drive(oi.driverJoystick);
+    Robot.driveTrain.drive(Robot.oi.driverJoystick);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -9,7 +9,6 @@ package frc.robot.drivetrain;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.drivetrain.DriveByJoystick;
  // is this correct?
@@ -17,14 +16,10 @@ import frc.robot.drivetrain.DriveByJoystick;
  * Add your docs here.
  */
 public class DriveTrain extends Subsystem {
-  private OI oi;
 
-  public DriveTrain(OI oi){
-    this.oi = oi;
-  }
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new DriveByJoystick(this,oi));
+    setDefaultCommand(new DriveByJoystick());
   }
 
   public void drive(Joystick joystick){

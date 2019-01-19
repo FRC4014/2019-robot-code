@@ -40,10 +40,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     
     oi = new OI();
-    driveTrain = new DriveTrain(oi);
+    driveTrain = new DriveTrain();
     limeLight = new LimeLight();
-    autonomousButtons = new AutonomousButtons(oi, limeLight);
-    m_chooser.setDefaultOption("Default Auto", new DriveByJoystick(driveTrain, oi));
+    autonomousButtons = new AutonomousButtons();
+    m_chooser.setDefaultOption("Default Auto", new DriveByJoystick());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
