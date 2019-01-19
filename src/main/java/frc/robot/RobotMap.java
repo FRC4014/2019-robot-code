@@ -8,7 +8,9 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -32,4 +34,11 @@ public class RobotMap {
   private static final SpeedControllerGroup DRIVE_TRAIN_LEFT_MOTOR_GROUP = new SpeedControllerGroup(DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR);
   private static final SpeedControllerGroup DRIVE_TRAIN_RIGHT_MOTOR_GROUP = new SpeedControllerGroup(DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
   public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
+
+  public static AHRS NAVX = new AHRS(SPI.Port.kMXP);
+
+
+  public static void init(){
+    NAVX.reset();
+  }
 }
