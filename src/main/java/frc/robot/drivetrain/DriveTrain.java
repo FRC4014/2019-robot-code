@@ -32,4 +32,9 @@ public class DriveTrain extends Subsystem {
     //if using last year's robot, comment the line above and uncomment the line below
     RobotMap.DRIVE_TRAIN_DIFFERENTIAL_DRIVE.arcadeDrive(joystick.getY(), joystick.getZ());
   }
+
+  public void resetEncoders(){
+    RobotMap.LEFT_ENCODER.reset();
+    RobotMap.RIGHT_ENCODER.reset();
+  }
 }

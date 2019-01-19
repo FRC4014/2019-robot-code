@@ -32,6 +32,9 @@ public class Pivot extends Command {
     maxSpeed = .8; // just guessing here, based on last year's code
     minSpeed = .2;
     tolerance = 1;
+    p = .5;
+    i = 0;
+    d = 0;
     integral = previousError = 0;
     acceptable = false;
   }

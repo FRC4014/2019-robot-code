@@ -10,8 +10,10 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
@@ -38,7 +40,15 @@ public class RobotMap {
   public static AHRS NAVX = new AHRS(SPI.Port.kMXP);
 
 
+  private static final double distancePerPulse = 1;//definatly wrong, we gotta figure this out
+  public static Encoder LEFT_ENCODER = new Encoder(DPIO.LEFT_ENCODER_A_CHANNEL, DPIO.LEFT_ENCODER_B_CHANNEL, false, EncodingType.k4X);
+  public static Encoder RIGHT_ENCODER = new Encoder(DPIO.RIGHT_ENCODER_A_CHANNEL, DPIO.RIGHT_ENCODER_B_CHANNEL, true, EncodingType.k4X);
+
+  
+
   public static void init(){
     NAVX.reset();
+    LEFT_ENCODER.setDistancePerPulse(distancePerPulse);
+    RIGHT_ENCODER.setDistancePerPulse(distancePerPulse);
   }
 }
