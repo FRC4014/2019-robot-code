@@ -7,8 +7,6 @@
 
 package frc.robot.lowrider;
 
-import com.sun.jdi.Value;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
