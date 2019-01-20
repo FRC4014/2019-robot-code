@@ -77,7 +77,7 @@ public class DriveByDistance extends Command {
       first = false;
       double rcw = 0;
       double rotation = 0;
-      speed = dp * (distance + RobotMap.LEFT_ENCODER.getDistance());
+      speed = dp * (distance + RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
       speed = Math.max(.5, Math.min(speed, maxDSpeed));
       isInsideTolerance = Math.abs(error) < tolerance;
       if (!isInsideTolerance) {
@@ -105,8 +105,7 @@ public class DriveByDistance extends Command {
 
   private boolean probableCollision() {
       boolean collision = (System.currentTimeMillis() - initTimestamp > 300) &&
-              (Math.abs(RobotMap.LEFT_ENCODER.getRate()) < 1.0) &&
-              (Math.abs(RobotMap.RIGHT_ENCODER.getRate()) < 1.0);
+              (Math.abs(RobotMap.DRIVE_TRAIN_ENCODER.getRate()) < 1.0);
       if (collision) {
           System.out.println("DriveByDistance: collision");
           collisions++;
@@ -115,7 +114,7 @@ public class DriveByDistance extends Command {
   }
 
   private boolean achievedDistance() {
-      double leftDistance = RobotMap.LEFT_ENCODER.getDistance();
+      double leftDistance = RobotMap.DRIVE_TRAIN_ENCODER.getDistance();
       boolean finished = leftDistance >= distance - 1;
       System.out.println("DriveByDistance.isFinished(): ENCODER distance = " + leftDistance + " |speed = " + speed + " |is finished = " + finished);
       if (finished) {
