@@ -38,27 +38,27 @@ public class LowRider extends Subsystem {
     return (RobotMap.BACK_LOW_SOLENOID.get() == DoubleSolenoid.Value.kForward);
   }
 
-  public void raiseLow(){
+  public void extendLow(){
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   }
-  public void raiseLowFront(){
+  public void retractLowFront(){
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
-  public void raiseLowBack(){
+  public void retractLowBack(){
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
-  public void raiseHigh(){
+  public void extendHigh(){
     RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   } 
-  public void raiseHighFront(){
+  public void retractHighFront(){
     RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
-  public void raiseHighBack(){
+  public void retractHighBack(){
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }

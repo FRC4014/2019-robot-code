@@ -19,7 +19,7 @@ public class RaiseLow extends Command {
 
   @Override
   protected void initialize() {
-    Robot.lowRider.raiseLow();
+    Robot.lowRider.extendLow();
     initTimeStamp = System.currentTimeMillis();
   }
 
@@ -28,10 +28,10 @@ public class RaiseLow extends Command {
   protected void execute() {
     if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100 && Robot.lowRider.isFrontNearFloor()) {
       if (Robot.lowRider.checkFrontSolenoid()){
-        Robot.lowRider.raiseLowFront();
+        Robot.lowRider.retractLowFront();
         initTimeStamp = System.currentTimeMillis();
       } else if (Robot.lowRider.isBackNearFloor()){
-        Robot.lowRider.raiseLowBack();
+        Robot.lowRider.retractLowBack();
       }
     }
   }
