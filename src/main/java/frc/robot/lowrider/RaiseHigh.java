@@ -22,7 +22,7 @@ public class RaiseHigh extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.lowRider.raiseHigh();
+    Robot.lowRider.extendHigh();
     initTimeStamp = System.currentTimeMillis();
   }
 
@@ -31,10 +31,10 @@ public class RaiseHigh extends Command {
   protected void execute() {
     if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100 && Robot.lowRider.isFrontNearFloor()){
       if (Robot.lowRider.checkFrontSolenoid()){
-        Robot.lowRider.raiseHighFront();
+        Robot.lowRider.retractHighFront();
         initTimeStamp = System.currentTimeMillis();
       } else if (Robot.lowRider.isBackNearFloor()){
-        Robot.lowRider.raiseHighBack();
+        Robot.lowRider.retractHighBack();
       }
     }
   }

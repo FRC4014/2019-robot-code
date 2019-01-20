@@ -29,7 +29,6 @@ public class DriveTrain extends Subsystem {
   }
 
   public void resetEncoders(){
-    RobotMap.LEFT_ENCODER.reset();
-    RobotMap.RIGHT_ENCODER.reset();
+    RobotMap.DRIVE_TRAIN_ENCODER.reset();
   }
 }

@@ -43,8 +43,7 @@ public class RobotMap {
 
 
   private static final double distancePerPulse = 1;//definatly wrong, we gotta figure this out
-  public static Encoder LEFT_ENCODER = new Encoder(DPIO.LEFT_ENCODER_A_CHANNEL, DPIO.LEFT_ENCODER_B_CHANNEL, false, EncodingType.k4X);
-  public static Encoder RIGHT_ENCODER = new Encoder(DPIO.RIGHT_ENCODER_A_CHANNEL, DPIO.RIGHT_ENCODER_B_CHANNEL, true, EncodingType.k4X);
+  public static Encoder DRIVE_TRAIN_ENCODER = new Encoder(DPIO.DRIVE_TRAIN_ENCODER_A_CHANNEL, DPIO.DRIVE_TRAIN_ENCODER_B_CHANNEL, false, EncodingType.k4X);
 
   public static DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(0, 7);
   public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid (1, 6);
@@ -58,8 +57,7 @@ public class RobotMap {
 
   public static void init(){
     NAVX.reset();
-    LEFT_ENCODER.setDistancePerPulse(distancePerPulse);
-    RIGHT_ENCODER.setDistancePerPulse(distancePerPulse);
+    DRIVE_TRAIN_ENCODER.setDistancePerPulse(distancePerPulse);
     FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
     FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
     BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);
