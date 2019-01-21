@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -54,6 +56,10 @@ public class RobotMap {
   public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(2, 2);
   public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 3);
   public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(4, 4);
+
+  public static Potentiometer LIFT_VERTICAL = new AnalogPotentiometer(0, 100, 0);
+  public static Potentiometer LIFT_ARM = new AnalogPotentiometer(0, 360, 0);
+  public static Potentiometer LIFT_WRIST = new AnalogPotentiometer(0, 360, 0);
 
   public static void init(){
     NAVX.reset();
