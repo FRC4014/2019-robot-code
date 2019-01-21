@@ -48,6 +48,7 @@ public class LiftPositionByPotentiometer extends Command {
     toleranceArm = toleranceWrist = 1;
     toleranceVertical = .5;
     acceptableArm = acceptableWrist = acceptableVertical = false;
+    requires(Robot.lift);
   }
 
   // Called repeatedly when this Command is scheduled to run

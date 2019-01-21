@@ -28,6 +28,12 @@ public class OI {
   public Button lookButton = new JoystickButton(driverJoystick, 2);
   public Button raiseHighButton = new JoystickButton(driverJoystick, 3);
   public Button raiseLow = new JoystickButton(driverJoystick, 4);
+  
+  public Joystick mateJoystick = new Joystick(1); // this probably won't be a joystick, so we'll have to change that
+  public Button position1Button = new JoystickButton(mateJoystick, 1);
+  public Button position2Button = new JoystickButton(mateJoystick, 2);
+  public Button position3Button = new JoystickButton(mateJoystick, 3);
+
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.

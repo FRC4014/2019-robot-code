@@ -8,8 +8,15 @@
 package frc.robot.lift;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 
 public class Lift extends Subsystem {
+
+  public Lift(){
+    Robot.oi.position1Button.whenPressed(new GoToPosition(20,4,1)); //totally not the correct positions
+    Robot.oi.position2Button.whenPressed(new GoToPosition(20,90,10));
+    Robot.oi.position3Button.whenPressed(new GoToPosition(200,4,25));
+  }
 
   @Override
   public void initDefaultCommand() {
@@ -27,6 +34,6 @@ public class Lift extends Subsystem {
     
   }
   public void stopMoving(){
-    
+
   }
 }
