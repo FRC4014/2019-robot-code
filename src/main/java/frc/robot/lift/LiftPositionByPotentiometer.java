@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -33,9 +26,9 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointWrist;
 
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist) {
-    this.vertical = RobotMap.LIFT_VERTICAL;
-    this.arm = RobotMap.LIFT_ARM;
-    this.wrist = RobotMap.LIFT_WRIST;
+    this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
+    this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
+    this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
     this.setPointArm = setPointArm;
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;
