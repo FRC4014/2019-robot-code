@@ -11,5 +11,5 @@ public final class CAN {
     public static final int LIFT_VERTICAL_MOTOR = 5;
     public static final int LIFT_ARM_MOTOR = 6;
     public static final int LIFT_WRIST_MOTOR = 7;
-
+    public static final int CLAW_MOTOR = 8;
 }
