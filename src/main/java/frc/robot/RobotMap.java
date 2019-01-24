@@ -22,33 +22,51 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
  */
 public class RobotMap {
 
+  private static final double WHEEL_DIAMETER = 6;
+
+  /**
+   * Encoder Resolution: AMT103 and AMT102 are 2048 (dip switchs all set to 0)
+   * Each full rotation causes 6 sensors, so ideally resolution is 341.3333. Based
+   * on experiments in 2018 we found 330 to work best, but 2019 needs to test it
+   * again.
+   */
+  private static final int ENCODER_RESOLUTION = 330;
+  private static final double PULSES_PER_ROTATION = ENCODER_RESOLUTION;
+  private static final double DISTANCE_PER_PULSE = (Math.PI * WHEEL_DIAMETER * 1 / PULSES_PER_ROTATION);
+  public static final Encoder DRIVE_TRAIN_ENCODER = 
+                    new Encoder(DPIO.DRIVE_TRAIN_ENCODER_A_CHANNEL, 
+                                DPIO.DRIVE_TRAIN_ENCODER_B_CHANNEL, 
+                                false,
+                                Encoder.EncodingType.k4X);
+
   public static final WPI_TalonSRX DRIVE_TRAIN_FRONT_RIGHT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_FRONT_RIGHT);
   public static final WPI_TalonSRX DRIVE_TRAIN_BACK_RIGHT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_BACK_RIGHT);
   public static final WPI_TalonSRX DRIVE_TRAIN_FRONT_LEFT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_FRONT_LEFT);
   public static final WPI_TalonSRX DRIVE_TRAIN_BACK_LEFT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_BACK_LEFT);
-  
-  public static final MecanumDrive DRIVE_TRAIN_MECANUM = new MecanumDrive(DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR, DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
-  
-  //the following stuff is for a standard arcade drive for use when testing on 2018 bot
-  private static final SpeedControllerGroup DRIVE_TRAIN_LEFT_MOTOR_GROUP = new SpeedControllerGroup(DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR);
-  private static final SpeedControllerGroup DRIVE_TRAIN_RIGHT_MOTOR_GROUP = new SpeedControllerGroup(DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
-  public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
+
+  public static final MecanumDrive DRIVE_TRAIN_MECANUM = new MecanumDrive(DRIVE_TRAIN_FRONT_LEFT_MOTOR,
+      DRIVE_TRAIN_BACK_LEFT_MOTOR, DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
+
+  // the following stuff is for a standard arcade drive for use when testing on
+  // 2018 bot
+  private static final SpeedControllerGroup DRIVE_TRAIN_LEFT_MOTOR_GROUP = new SpeedControllerGroup(
+      DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR);
+  private static final SpeedControllerGroup DRIVE_TRAIN_RIGHT_MOTOR_GROUP = new SpeedControllerGroup(
+      DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
+  public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(
+      DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
 
   public static AHRS NAVX = new AHRS(SPI.Port.kMXP);
 
-
-  private static final double distancePerPulse = 1;//definatly wrong, we gotta figure this out
-  public static Encoder DRIVE_TRAIN_ENCODER = new Encoder(DPIO.DRIVE_TRAIN_ENCODER_A_CHANNEL, DPIO.DRIVE_TRAIN_ENCODER_B_CHANNEL, false, EncodingType.k4X);
-
   public static DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(0, 7);
-  public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid (1, 6);
-  public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid (2, 5);
-  public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid (3, 4);
+  public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(1, 6);
+  public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);
+  public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(3, 4);
 
-  public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(1, 1);
-  public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(2, 2);
-  public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 3);
-  public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(4, 4);
+  public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
+  public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);
+  public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
+  public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
   public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 100, 0);
   public static Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
@@ -60,9 +78,9 @@ public class RobotMap {
   public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
   public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
-  public static void init(){
+  private static void init() {
     NAVX.reset();
-    DRIVE_TRAIN_ENCODER.setDistancePerPulse(distancePerPulse);
+    DRIVE_TRAIN_ENCODER.setDistancePerPulse(DISTANCE_PER_PULSE);
     FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
     FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
     BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);
