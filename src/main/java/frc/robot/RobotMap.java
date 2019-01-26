@@ -29,6 +29,7 @@ public class RobotMap {
    * on experiments in 2018 we found 330 to work best, but 2019 needs to test it
    * again.
    */
+  private static final int ANGLE_PER_PULSE = 1;//total guess
   private static final int ENCODER_RESOLUTION = 330;
   private static final double PULSES_PER_ROTATION = ENCODER_RESOLUTION;
   private static final double DISTANCE_PER_PULSE = (Math.PI * WHEEL_DIAMETER * 1 / PULSES_PER_ROTATION);
@@ -67,9 +68,10 @@ public class RobotMap {
   public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
   public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
-  public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 100, 0);
+  public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
   public static Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-  public static Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
+  // public static Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
+  public static final Encoder LIFT_WRIST_ENCODER = new Encoder(DPIO.LIFT_WRIST_ENCODER_A_CHANNEL, DPIO.LIFT_WRIST_ENCODER_B_CHANNEL, false, Encoder.EncodingType.k4X);
   public static WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
   public static WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
   public static WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
@@ -80,6 +82,7 @@ public class RobotMap {
   private static void init() {
     NAVX.reset();
     DRIVE_TRAIN_ENCODER.setDistancePerPulse(DISTANCE_PER_PULSE);
+    LIFT_WRIST_ENCODER.setDistancePerPulse(ANGLE_PER_PULSE);
     FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
     FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
     BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);

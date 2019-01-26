@@ -1,5 +1,6 @@
 package frc.robot.lift;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import frc.robot.Robot;
@@ -13,7 +14,8 @@ public class LiftPositionByPotentiometer extends Command {
 
   private Potentiometer vertical;
   private Potentiometer arm;
-  private Potentiometer wrist;
+  // private Potentiometer wrist;
+  private Encoder wrist;
 
   private double toleranceVertical;
   private double toleranceArm;
@@ -28,7 +30,7 @@ public class LiftPositionByPotentiometer extends Command {
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
-    this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
+    this.wrist = RobotMap.LIFT_WRIST_ENCODER;
     this.setPointArm = setPointArm;
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;
@@ -51,7 +53,7 @@ public class LiftPositionByPotentiometer extends Command {
     vRcw = aRcw = wRcw = 0;
     double errorVertical = setPointVertical - vertical.get();
     double errorArm = setPointArm - arm.get();
-    double errorWrist = setPointWrist - wrist.get();
+    double errorWrist = setPointWrist - wrist.getDistance();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
