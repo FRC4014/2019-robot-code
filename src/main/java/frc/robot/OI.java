@@ -29,6 +29,8 @@ public class OI {
   public Button clawCargoIntakeButton = new JoystickButton(mateJoystick, 4);
   public Button clawCargoHoldButton = new JoystickButton(mateJoystick, 5);
   public Button clawCargoOutputButton = new JoystickButton(mateJoystick, 6);
+  public Button hatchIntakeButton = new JoystickButton(mateJoystick, 7);
+  public Button hatchOutpuButton = new JoystickButton(mateJoystick, 8);
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

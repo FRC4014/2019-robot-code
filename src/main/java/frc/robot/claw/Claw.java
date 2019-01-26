@@ -7,6 +7,8 @@
 
 package frc.robot.claw;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -20,6 +22,7 @@ public class Claw extends Subsystem {
   public Claw(){
     Robot.oi.clawCargoIntakeButton.whenPressed(new CargoIntake());
     Robot.oi.clawCargoOutputButton.whenPressed(new CargoOutput());
+    Robot.oi.hatchIntakeButton.whenPressed(new HatchInputOutput());
   }
   @Override
   public void initDefaultCommand() {
@@ -34,5 +37,11 @@ public class Claw extends Subsystem {
   }
   public void cargoHold(){
     RobotMap.CLAW_MOTOR.set(0);
+  }
+  public void hatchIntake(){
+    RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+  }
+  public void hatchOutput(){
+    RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
 }
