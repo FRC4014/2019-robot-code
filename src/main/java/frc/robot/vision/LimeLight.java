@@ -49,11 +49,11 @@ public class LimeLight extends Subsystem {
     System.out.println(" off Beta= " + offBeta);
 
   }
-  public double angle(double heightDifference, double cameraAngle){
+  public double angle(double heightDifference, double cameraAngle, double xDifference){
     double distance = heightDifference / Math.tan(cameraAngle + ty.getDouble(0.0));
     double beta = (41 * twidth.getDouble(0.0)/320);
     double idealBeta = Math.toDegrees(2 * Math.atan(7.336/distance));
-    double signGuess = tx.getDouble(0.0)/Math.abs(tx.getDouble(0.0));
+    double signGuess = tx.getDouble(0.0)/Math.abs(xOffset(heightDifference, cameraAngle, xDifference));
     double offBeta = 0;
       if (beta > idealBeta){
         offBeta = 0;
@@ -63,7 +63,9 @@ public class LimeLight extends Subsystem {
     double offBetaGuess = offBeta * signGuess;
     return offBetaGuess;
   }
-  public double xOffset(){
-    return tx.getDouble(0.0);
+  public double xOffset(double heightDifference, double cameraAngle, double xDifference){
+    double distancex = heightDifference / Math.tan(cameraAngle + ty.getDouble(0.0));
+    double xOff = (distancex * Math.sin(tx.getDouble(0.0))) - xDifference;
+    return xOff;
   }
 }

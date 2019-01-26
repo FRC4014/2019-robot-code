@@ -17,6 +17,7 @@ public class AlignByVision extends Command {
   
   private double heightDifference = 1;
   private double cameraAngle = 0;
+  private double xDifference = 0;
 
   public AlignByVision(LimeLight limeLight) {
     this.limeLight = limeLight;
@@ -25,14 +26,14 @@ public class AlignByVision extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    previousAngleError = limeLight.angle(heightDifference, cameraAngle);
+    previousAngleError = limeLight.angle(heightDifference, cameraAngle, xDifference);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double correctionAngle = limeLight.angle(heightDifference, cameraAngle);
-    double correctionX = limeLight.xOffset();
+    double correctionAngle = limeLight.angle(heightDifference, cameraAngle, xDifference);
+    double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
     acceptableAngle = Math.abs(correctionAngle) < angleTolerance;
     acceptableX = Math.abs(correctionX) < xTolerance;
     double angleRCW = 0;
