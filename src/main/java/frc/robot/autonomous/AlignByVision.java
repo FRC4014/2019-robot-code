@@ -1,6 +1,9 @@
 package frc.robot.autonomous;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.vision.LimeLight;
 
@@ -13,26 +16,29 @@ public class AlignByVision extends Command {
   private double angleTolerance = .1; //Placeholder
   private double xTolerance = 2; //Placeholder
   private final LimeLight limeLight;
+  private final AHRS navX;
   private double correctionAngleSign = 1;
-  
+  private double targetAngle;
   private double heightDifference = 1;
   private double cameraAngle = 0;
   private double xDifference = 0;
 
-  public AlignByVision(LimeLight limeLight) {
-    this.limeLight = limeLight;
+  public AlignByVision(double targetAngle) {
+    this.limeLight = Robot.limeLight;
+    this.navX = RobotMap.NAVX;
+    this.targetAngle = targetAngle;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    previousAngleError = limeLight.angle(heightDifference, cameraAngle, xDifference);
+    previousAngleError = targetAngle - navX.getAngle();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double correctionAngle = limeLight.angle(heightDifference, cameraAngle, xDifference);
+    double correctionAngle = targetAngle - navX.getAngle();
     double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
     acceptableAngle = Math.abs(correctionAngle) < angleTolerance;
     acceptableX = Math.abs(correctionX) < xTolerance;
@@ -42,10 +48,6 @@ public class AlignByVision extends Command {
     if (!acceptableAngle){
       angleIntegral += correctionAngle * .02; // .02 is the typical timing for IterativeRobot
       double derivative = (correctionAngle - previousAngleError) / .02; // last years code uses division, but this maybe should be multiplication?
-      if(derivative < 0){
-        //we're going the wrong way!, turn around
-        correctionAngleSign = correctionAngleSign * -1;
-      }
       angleRCW = (p * correctionAngle * correctionAngleSign) + (i * angleIntegral) + (d * derivative);
     }
 
