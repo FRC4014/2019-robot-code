@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     
     oi = new OI();
+    RobotMap.init();
     driveTrain = new DriveTrain();
     limeLight = new LimeLight();
     lowRider = new LowRider();

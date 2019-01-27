@@ -79,7 +79,7 @@ public class RobotMap {
   public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
   public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
-  private static void init() {
+  public static void init() {
     NAVX.reset();
     DRIVE_TRAIN_ENCODER.setDistancePerPulse(DISTANCE_PER_PULSE);
     LIFT_WRIST_ENCODER.setDistancePerPulse(ANGLE_PER_PULSE);
