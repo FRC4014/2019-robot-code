@@ -6,6 +6,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Ultrasonic;
@@ -22,6 +23,8 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 public class RobotMap {
 
   private static final double WHEEL_DIAMETER = 6;
+
+  public static final PowerDistributionPanel PDP = new PowerDistributionPanel();
 
   /**
    * Encoder Resolution: AMT103 and AMT102 are 2048 (dip switchs all set to 0)

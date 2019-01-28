@@ -9,6 +9,7 @@ package frc.robot.claw;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class CargoIntake extends Command {
 
@@ -33,7 +34,8 @@ public class CargoIntake extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (System.currentTimeMillis() - initTimeStamp > 10000 || Robot.oi.clawCargoHoldButton.get());
+    //TODO: set safty current int to the channel wired to the claw bag motor
+    return (System.currentTimeMillis() - initTimeStamp > 10000 || Robot.oi.clawCargoHoldButton.get() || RobotMap.PDP.getCurrent(0) >= 53);
   }
 
   // Called once after isFinished returns true
