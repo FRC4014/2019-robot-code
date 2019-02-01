@@ -71,21 +71,21 @@ public class RobotMap {
   public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
   public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
-  public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
-  public static Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-  // public static Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-  public static final Encoder LIFT_WRIST_ENCODER = new Encoder(DPIO.LIFT_WRIST_ENCODER_A_CHANNEL, DPIO.LIFT_WRIST_ENCODER_B_CHANNEL, false, Encoder.EncodingType.k4X);
-  public static WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
-  public static WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
-  public static WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
+//   public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
+//   public static Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
+//   // public static Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
+//   public static final Encoder LIFT_WRIST_ENCODER = new Encoder(DPIO.LIFT_WRIST_ENCODER_A_CHANNEL, DPIO.LIFT_WRIST_ENCODER_B_CHANNEL, false, Encoder.EncodingType.k4X);
+//   public static WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
+//   public static WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
+//   public static WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
 
-  public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
-  public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
+//   public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
+//   public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
   public static void init() {
     NAVX.reset();
     DRIVE_TRAIN_ENCODER.setDistancePerPulse(DISTANCE_PER_PULSE);
-    LIFT_WRIST_ENCODER.setDistancePerPulse(ANGLE_PER_PULSE);
+    // LIFT_WRIST_ENCODER.setDistancePerPulse(ANGLE_PER_PULSE);
     FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
     FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
     BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);
