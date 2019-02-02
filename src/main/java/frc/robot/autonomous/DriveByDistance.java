@@ -14,11 +14,12 @@ public class DriveByDistance extends Command {
 
   private double p, i, d, dp = 0;
   private double integral, previousError;
-  private final double setPoint = 0;
+//   private final double setPoint = 0;
   private boolean isInsideTolerance = false;
   private boolean first = true;
 
   private final AHRS navX;
+  private double initAngle;
 
   private double maxSpeed;
   private double minSpeed;
@@ -48,7 +49,8 @@ public class DriveByDistance extends Command {
 
   private void initPIDControl() {
       initTimestamp = System.currentTimeMillis();
-      navX.reset();
+    //   navX.reset();
+      initAngle = navX.getAngle();
       p = 0.5;//guesses
       i = 0;
       d = 0;
@@ -59,14 +61,14 @@ public class DriveByDistance extends Command {
       integral = previousError = 0;
       isInsideTolerance = false;
       first = true;
-      System.out.println("p: " + p + " | i: " + i + " | d: " + d + " | setPoint: " + setPoint);
+      System.out.println("p: " + p + " | i: " + i + " | d: " + d + " | setPoint: ");
   }
 
   @Override
   protected void execute() {
-      final double angle = navX.getAngle();
-      double error = setPoint - angle;
-      error = first ? setPoint : error; // in case ahrs.reset() isn't isInsideTolerance (only observed first time, so kludging it)
+      final double angle = navX.getAngle() - initAngle;
+      double error = angle;
+    //   error = first ? setPoint : error; // in case ahrs.reset() isn't isInsideTolerance (only observed first time, so kludging it)
       first = false;
       double rcw = 0;
       double rotation = 0;

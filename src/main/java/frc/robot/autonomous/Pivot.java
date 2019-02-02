@@ -39,6 +39,7 @@ public class Pivot extends Command {
     double error = setPoint - angle;
     double rcw = 0;
     double rotation = 0;
+    System.out.print("Pivot Error is " + Math.abs(error));
     acceptable = Math.abs(error) < tolerance;
     if (!acceptable){
       integral += error * .02;
