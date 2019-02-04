@@ -83,7 +83,7 @@ public class DriveByDistance extends Command {
           double modRcw = Math.abs(rcw)/* / (setPoint * .25)*/; //setpoint was 0, maybe dividing by 0 causes problems?
           rotation = Math.max(minSpeed, Math.min(modRcw, maxSpeed));
           rotation = rcw < 0 ? -rotation : rotation;
-
+          System.out.println("speed is " + -speed + " rotation is " + rotation);
           RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-speed, 0, rotation);
       } else {
           RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-speed, 0, 0);
@@ -109,7 +109,8 @@ public class DriveByDistance extends Command {
   }
 
   private boolean achievedDistance() {
-      double leftDistance = RobotMap.DRIVE_TRAIN_ENCODER.getDistance();
+    //   double leftDistance = RobotMap.DRIVE_TRAIN_ENCODER.getDistance();
+    double leftDistance = 1;
       boolean finished = leftDistance >= distance - 1;
       System.out.println("DriveByDistance.isFinished(): ENCODER distance = " + leftDistance + " |speed = " + speed + " |is finished = " + finished);
       if (finished) {

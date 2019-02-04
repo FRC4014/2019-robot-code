@@ -9,7 +9,7 @@ public class RaiseHigh extends Command {
   private long initTimeStamp;
 
   public RaiseHigh(){
-    requires(Robot.lowRider);
+    // requires(Robot.lowRider);
   }
 
   // Called just before this Command runs the first time

@@ -7,7 +7,7 @@ public class RaiseLow extends Command {
 
   private long initTimeStamp;
   public RaiseLow() {
-    requires(Robot.lowRider);
+    // requires(Robot.lowRider);
   }
 
   @Override

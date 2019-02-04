@@ -1,5 +1,7 @@
 package frc.robot.drivetrain;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -15,13 +17,14 @@ public class DriveTrain extends Subsystem {
     setDefaultCommand(new DriveByJoystick());
   }
 
-  public void drive(Joystick joystick){
-    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(joystick.getY(), joystick.getX(), joystick.getZ());
-    //if using last year's robot, comment the line above and uncomment the line below
-    // RobotMap.DRIVE_TRAIN_DIFFERENTIAL_DRIVE.arcadeDrive(joystick.getY(), joystick.getZ());
+  public void drive(Joystick joystick, Double gyroAngle){
+    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0*-joystick.getX(), joystick.getY(), -joystick.getZ());
+    // System.out.println(gyroAngle);
+    System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
+    // RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
   }
 
   public void resetEncoders(){
-    RobotMap.DRIVE_TRAIN_ENCODER.reset();
+    // RobotMap.DRIVE_TRAIN_ENCODER.reset();
   }
 }

@@ -16,7 +16,7 @@ public class CargoOutput extends Command {
   private long initTimeStamp;
 
   public CargoOutput() {
-    requires(Robot.claw);
+    // requires(Robot.claw);
   }
 
   // Called just before this Command runs the first time

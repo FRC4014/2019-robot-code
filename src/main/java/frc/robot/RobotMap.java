@@ -39,7 +39,7 @@ public class RobotMap {
   public static final Encoder DRIVE_TRAIN_ENCODER = 
                     new Encoder(DPIO.DRIVE_TRAIN_ENCODER_A_CHANNEL, 
                                 DPIO.DRIVE_TRAIN_ENCODER_B_CHANNEL, 
-                                false,
+                                true,
                                 Encoder.EncodingType.k4X);
 
   public static final WPI_TalonSRX DRIVE_TRAIN_FRONT_RIGHT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_FRONT_RIGHT);
@@ -66,10 +66,10 @@ public class RobotMap {
   public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);
   public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(3, 4);
 
-  public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
-  public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);
-  public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
-  public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
+//   public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
+//   public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);
+//   public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
+//   public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
 //   public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
 //   public static Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
@@ -84,11 +84,12 @@ public class RobotMap {
 
   public static void init() {
     NAVX.reset();
-    DRIVE_TRAIN_ENCODER.setDistancePerPulse(DISTANCE_PER_PULSE);
+    DRIVE_TRAIN_ENCODER.reset();
+    DRIVE_TRAIN_ENCODER.setDistancePerPulse(0.00878049);
     // LIFT_WRIST_ENCODER.setDistancePerPulse(ANGLE_PER_PULSE);
-    FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
-    FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
-    BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);
-    BACK_LEFT_ULTRASONIC.setAutomaticMode(true);
+    // FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
+    // FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
+    // BACK_RIGHT_ULTRASONIC.setAutomaticMode(true);
+    // BACK_LEFT_ULTRASONIC.setAutomaticMode(true);
   }
 }

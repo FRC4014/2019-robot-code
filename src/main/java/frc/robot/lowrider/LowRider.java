@@ -17,12 +17,14 @@ public class LowRider extends Subsystem {
   public void initDefaultCommand() {
   }
   public boolean isFrontNearFloor() {
-    return (RobotMap.FRONT_RIGHT_ULTRASONIC.getRangeInches() < 5)
-    && (RobotMap.FRONT_LEFT_ULTRASONIC .getRangeInches() < 5);
+    return true;
+    // return (RobotMap.FRONT_RIGHT_ULTRASONIC.getRangeInches() < 5)
+    // && (RobotMap.FRONT_LEFT_ULTRASONIC .getRangeInches() < 5);
   }
   public boolean isBackNearFloor() {
-    return (RobotMap.BACK_RIGHT_ULTRASONIC.getRangeInches() < 5)
-    && (RobotMap.BACK_LEFT_ULTRASONIC .getRangeInches() < 5);
+    return true;
+    // return (RobotMap.BACK_RIGHT_ULTRASONIC.getRangeInches() < 5)
+    // && (RobotMap.BACK_LEFT_ULTRASONIC .getRangeInches() < 5);
   }
   public boolean checkFrontSolenoid(){
     return (RobotMap.FRONT_LOW_SOLENOID.get() == DoubleSolenoid.Value.kForward);
