@@ -8,6 +8,7 @@ public class RaiseHigh extends Command {
 
   private long initTimeStamp;
   private boolean topUp;
+  private boolean backup;
 
   public RaiseHigh(){
     // requires(Robot.lowRider);
@@ -18,6 +19,7 @@ public class RaiseHigh extends Command {
   protected void initialize() {
     System.out.println("Start raise high");
     topUp = false;
+    backup = false;
     Robot.lowRider.extendHigh();
     initTimeStamp = System.currentTimeMillis();
   }
@@ -35,6 +37,8 @@ public class RaiseHigh extends Command {
         initTimeStamp = System.currentTimeMillis();
       } else if (Robot.lowRider.isBackNearFloor()){
         Robot.lowRider.retractHighBack();
+        initTimeStamp = System.currentTimeMillis();
+        backup = true;
       }
     }
   }
@@ -42,7 +46,7 @@ public class RaiseHigh extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (!Robot.lowRider.checkBackSolenoid() && System.currentTimeMillis() - initTimeStamp > 1000);
+    return (backup == true && System.currentTimeMillis() - initTimeStamp > 1000);
   }
 
   // Called once after isFinished returns true

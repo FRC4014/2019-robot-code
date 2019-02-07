@@ -36,7 +36,7 @@ public class solenoidInOut extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.oi.alignButton.get() && System.currentTimeMillis() - inittime > 1000);
+    return (Robot.oi.lookButton.get());
   }
 
   // Called once after isFinished returns true
