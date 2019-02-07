@@ -23,9 +23,9 @@ public class Pivot extends Command {
   @Override
   protected void initialize() {
     maxSpeed = .8; // just guessing here, based on last year's code
-    minSpeed = .2;
+    minSpeed = .4;
     tolerance = 1;
-    p = .5;
+    p = 1;
     i = 0;
     d = 0;
     integral = previousError = 0;
@@ -48,7 +48,8 @@ public class Pivot extends Command {
       double modRcw = Math.abs(rcw) / Math.abs(setPoint) * .25;
       rotation = Math.max(minSpeed, Math.min(modRcw, maxSpeed));
       rotation = rcw < 0 ? -rotation : rotation;
-      RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, 0, rotation);
+      System.out.print("rotation speed is " + rotation);
+      RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, 0, -rotation);
     }
   }
 

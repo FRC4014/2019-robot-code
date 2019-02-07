@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -60,11 +61,12 @@ public class RobotMap {
       DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
 
   public static AHRS NAVX = new AHRS(SPI.Port.kMXP);
-
-  public static DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(0, 7);
-  public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(1, 6);
+  
+  public static Compressor compressor = new Compressor(1);
+  public static DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(4, 3);
+  public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(6, 1);
   public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);
-  public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(3, 4);
+  public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(0, 7);
 
 //   public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
 //   public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);
@@ -83,6 +85,12 @@ public class RobotMap {
 //   public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
   public static void init() {
+    compressor.setClosedLoopControl(true);
+    FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+
     NAVX.reset();
     DRIVE_TRAIN_ENCODER.reset();
     DRIVE_TRAIN_ENCODER.setDistancePerPulse(0.00878049);

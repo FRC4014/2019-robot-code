@@ -3,6 +3,7 @@ package frc.robot.autonomous;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.drivetrain.DriveTrain;
 
@@ -29,9 +30,9 @@ public class DriveByDistance extends Command {
   
   private int collisions;
 
-  public DriveByDistance(DriveTrain driveTrain, double speed, double distance) {
+  public DriveByDistance(double speed, double distance) {
       this.navX = RobotMap.NAVX;
-      this.driveTrain = driveTrain;
+      this.driveTrain = Robot.driveTrain;
       this.speed = speed;
       this.distance = distance;
       this.maxDSpeed = speed;

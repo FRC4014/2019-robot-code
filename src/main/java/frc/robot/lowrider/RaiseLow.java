@@ -12,6 +12,7 @@ public class RaiseLow extends Command {
 
   @Override
   protected void initialize() {
+    System.out.println("begin raise low");
     Robot.lowRider.extendLow();
     initTimeStamp = System.currentTimeMillis();
   }
@@ -19,6 +20,7 @@ public class RaiseLow extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    System.out.println("Running raise low");
     if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 100 && Robot.lowRider.isFrontNearFloor()) {
       if (Robot.lowRider.checkFrontSolenoid()){
         Robot.lowRider.retractLowFront();
@@ -38,5 +40,6 @@ public class RaiseLow extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    System.out.println("finished raise low");
   }
 }
