@@ -17,6 +17,9 @@ public class DriveByJoystick extends Command {
 
   protected void initialize(){
     navX.reset();
+    Robot.driveTrain.resetEncoders();
+    Robot.lowRider.retractLowBack();
+    Robot.lowRider.retractLowFront();
   }
 
   // Called repeatedly when this Command is scheduled to run

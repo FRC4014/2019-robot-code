@@ -18,13 +18,13 @@ public class DriveTrain extends Subsystem {
   }
 
   public void drive(Joystick joystick, Double gyroAngle){
-    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0*-joystick.getX(), joystick.getY(), -joystick.getZ());
+    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ());
     // System.out.println(gyroAngle);
-    // System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());s
+    System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
     // RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
   }
 
   public void resetEncoders(){
-    // RobotMap.DRIVE_TRAIN_ENCODER.reset();
+    RobotMap.DRIVE_TRAIN_ENCODER.reset();
   }
 }

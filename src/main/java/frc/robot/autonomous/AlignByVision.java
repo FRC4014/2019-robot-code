@@ -22,6 +22,7 @@ public class AlignByVision extends Command {
   private double heightDifference = 1;
   private double cameraAngle = 0;
   private double xDifference = 0;
+  private long timeCheck;
 
   public AlignByVision(double targetAngle) {
     this.limeLight = Robot.limeLight;
@@ -33,6 +34,7 @@ public class AlignByVision extends Command {
   @Override
   protected void initialize() {
     previousAngleError = targetAngle - navX.getAngle();
+    timeCheck = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -49,12 +51,14 @@ public class AlignByVision extends Command {
       angleIntegral += correctionAngle * .02; // .02 is the typical timing for IterativeRobot
       double derivative = (correctionAngle - previousAngleError) / .02; // last years code uses division, but this maybe should be multiplication?
       angleRCW = (p * correctionAngle * correctionAngleSign) + (i * angleIntegral) + (d * derivative);
+      timeCheck = System.currentTimeMillis();
     }
 
     if (!acceptableX){
       xIntegral += correctionX * .02;
       double derivative = (correctionX - previousXError) / .02;
       xRCW = (p * correctionX) + (i * xIntegral) + (d * derivative);
+      timeCheck = System.currentTimeMillis();
     }
     System.out.print("Angle RCW = " + angleRCW);
     System.out.println(" x RCW = " + xRCW);
@@ -67,7 +71,7 @@ public class AlignByVision extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (acceptableAngle && acceptableX);
+    return (acceptableAngle && acceptableX && System.currentTimeMillis() - timeCheck > 500);
   }
 
   // Called once after isFinished returns true

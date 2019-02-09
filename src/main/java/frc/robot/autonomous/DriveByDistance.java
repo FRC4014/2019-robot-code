@@ -34,7 +34,7 @@ public class DriveByDistance extends Command {
       this.navX = RobotMap.NAVX;
       this.driveTrain = Robot.driveTrain;
       this.speed = speed;
-      this.distance = distance;
+      this.distance = distance - 5;
       this.maxDSpeed = speed;
       requires(driveTrain);
   }
@@ -52,12 +52,12 @@ public class DriveByDistance extends Command {
       initTimestamp = System.currentTimeMillis();
     //   navX.reset();
       initAngle = navX.getAngle();
-      p = 0.5;//guesses
+      p = 0.8;//guesses
       i = 0;
       d = 0;
-      dp = .7; //getting the right distance doesn't need anything fancy, so this is just a "p" on a position pid with no i or d
-      maxSpeed = .8;
-      minSpeed = .2;
+      dp = .6; //getting the right distance doesn't need anything fancy, so this is just a "p" on a position pid with no i or d
+      maxSpeed = 1;
+      minSpeed = 0;
       tolerance = 1;
       integral = previousError = 0;
       isInsideTolerance = false;
@@ -73,24 +73,29 @@ public class DriveByDistance extends Command {
       first = false;
       double rcw = 0;
       double rotation = 0;
-      speed = dp * (distance + RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
-      speed = Math.max(.5, Math.min(speed, maxDSpeed));
+      speed = dp * (distance - RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
+      speed = speed / 30;
+      speed = Math.max(0, Math.min(speed, maxDSpeed));
       isInsideTolerance = Math.abs(error) < tolerance;
       if (!isInsideTolerance) {
           integral += error * 0.02; // 0.02 because it's normal timing for IterativeRobot.
           double derivative = (error - previousError) / 0.02;
           rcw = (p * error) + (i * integral) + (d * derivative);
 
-          double modRcw = Math.abs(rcw)/* / (setPoint * .25)*/; //setpoint was 0, maybe dividing by 0 causes problems?
+          double modRcw = Math.abs(rcw) /45 ;/* / (setPoint * .25)*/ //setpoint was 0, maybe dividing by 0 causes problems?
           rotation = Math.max(minSpeed, Math.min(modRcw, maxSpeed));
           rotation = rcw < 0 ? -rotation : rotation;
-          System.out.println("speed is " + -speed + " rotation is " + rotation);
-          RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-speed, 0, rotation);
+          System.out.println("speed is " + speed + " rotation is " + rotation);
+          RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, -speed, rotation);
       } else {
-          RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-speed, 0, 0);
+          RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, -speed, 0);
       }
 //		System.out.println("isInsideTolerance: " + isInsideTolerance + " | angle: " + angle + " | error: " + error + " | raw rcw: " + rcw
 //				+ " | rotation: " + rotation +" | speed: " + speed);
+  }
+
+  protected void end() {
+      RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, 0, 0);
   }
 
   @Override
@@ -101,7 +106,7 @@ public class DriveByDistance extends Command {
 
   private boolean probableCollision() {
       boolean collision = (System.currentTimeMillis() - initTimestamp > 300) &&
-              (Math.abs(RobotMap.DRIVE_TRAIN_ENCODER.getRate()) < 1.0);
+              (Math.abs(RobotMap.DRIVE_TRAIN_ENCODER.getRate()) < 0.0);
       if (collision) {
           System.out.println("DriveByDistance: collision");
           collisions++;
@@ -110,10 +115,10 @@ public class DriveByDistance extends Command {
   }
 
   private boolean achievedDistance() {
-    //   double leftDistance = RobotMap.DRIVE_TRAIN_ENCODER.getDistance();
-    double leftDistance = 1;
-      boolean finished = leftDistance >= distance - 1;
-      System.out.println("DriveByDistance.isFinished(): ENCODER distance = " + leftDistance + " |speed = " + speed + " |is finished = " + finished);
+      double leftDistance = RobotMap.DRIVE_TRAIN_ENCODER.getDistance();
+    // double leftDistance = 1;
+      boolean finished = (leftDistance >= distance);
+    //   System.out.println("DriveByDistance.isFinished(): ENCODER distance = " + leftDistance + " |speed = " + speed + " |is finished = " + finished);
       if (finished) {
           System.out.println("DriveByDistance: drove " + distance + " inches");
       }

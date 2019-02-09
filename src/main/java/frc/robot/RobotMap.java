@@ -40,7 +40,7 @@ public class RobotMap {
   public static final Encoder DRIVE_TRAIN_ENCODER = 
                     new Encoder(DPIO.DRIVE_TRAIN_ENCODER_A_CHANNEL, 
                                 DPIO.DRIVE_TRAIN_ENCODER_B_CHANNEL, 
-                                true,
+                                false,
                                 Encoder.EncodingType.k4X);
 
   public static final WPI_TalonSRX DRIVE_TRAIN_FRONT_RIGHT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_FRONT_RIGHT);
@@ -93,7 +93,8 @@ public class RobotMap {
 
     NAVX.reset();
     DRIVE_TRAIN_ENCODER.reset();
-    DRIVE_TRAIN_ENCODER.setDistancePerPulse(0.00878049);
+    DRIVE_TRAIN_ENCODER.setDistancePerPulse(0.00894454);
+    // DRIVE_TRAIN_ENCODER.setDistancePerPulse(1);
     // LIFT_WRIST_ENCODER.setDistancePerPulse(ANGLE_PER_PULSE);
     // FRONT_RIGHT_ULTRASONIC.setAutomaticMode(true);
     // FRONT_LEFT_ULTRASONIC.setAutomaticMode(true);
