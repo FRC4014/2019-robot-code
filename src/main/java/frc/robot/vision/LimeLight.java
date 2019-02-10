@@ -20,6 +20,8 @@ public class LimeLight extends Subsystem {
   private NetworkTableEntry tx = table.getEntry("tx");
   private NetworkTableEntry ty = table.getEntry("ty");
   private NetworkTableEntry twidth = table.getEntry("tlong");
+  private NetworkTableEntry tv = table.getEntry("tv");
+  private double prevX;
   // private NetworkTableEntry theight = table.getEntry("tvert");
   // private NetworkTableEntry tarea = table.getEntry("ta");
 
@@ -64,8 +66,18 @@ public class LimeLight extends Subsystem {
     return offBetaGuess;
   }
   public double xOffset(double heightDifference, double cameraAngle, double xDifference){
-    double distancex = heightDifference / Math.tan(cameraAngle + ty.getDouble(0.0));
-    double xOff = (distancex * Math.sin(tx.getDouble(0.0))) - xDifference;
+    double distancex = heightDifference / Math.tan(Math.toRadians(cameraAngle + ty.getDouble(0.0)));
+    double xOff = (distancex * Math.tan(Math.toRadians(tx.getDouble(0.0)))) - xDifference;
+    if (tv.getBoolean(false) == true){
+      xOff = 123456;
+    }
+    // double xOff = tx.getDouble(0.0);
+    // System.out.println( "distance is: " + distancex + "x off is: " + xOff);
+
     return xOff;
+  }
+  public double yOffset(double heightDifference, double cameraAngle){
+    double yOff = heightDifference / Math.tan(Math.toRadians(cameraAngle + ty.getDouble(0.0)));
+    return yOff;
   }
 }

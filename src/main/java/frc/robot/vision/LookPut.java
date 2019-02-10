@@ -8,13 +8,14 @@
 package frc.robot.vision;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class LookPut extends Command {
 
   private final LimeLight limeLight;
 
-  public LookPut(LimeLight limeLight) {
-    this.limeLight = limeLight;
+  public LookPut() {
+    this.limeLight = Robot.limeLight;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -27,7 +28,8 @@ public class LookPut extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    limeLight.printImage();
+    // limeLight.printImage();
+    limeLight.xOffset(6.5, 0, -5.375);
   }
 
   // Make this return true when this Command no longer needs to run execute()
