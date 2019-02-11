@@ -68,16 +68,25 @@ public class LimeLight extends Subsystem {
   public double xOffset(double heightDifference, double cameraAngle, double xDifference){
     double distancex = heightDifference / Math.tan(Math.toRadians(cameraAngle + ty.getDouble(0.0)));
     double xOff = (distancex * Math.tan(Math.toRadians(tx.getDouble(0.0)))) - xDifference;
-    if (tv.getBoolean(false) == true){
-      xOff = 123456;
+    if (tv.getDouble(0) == 0){
+      xOff = prevX;
     }
     // double xOff = tx.getDouble(0.0);
-    // System.out.println( "distance is: " + distancex + "x off is: " + xOff);
-
+    // System.out.println( "distance is: " + distancex + "x off is: " + xOff + " tv is: " + tv.getDouble(0));
+    prevX = xOff;
     return xOff;
   }
   public double yOffset(double heightDifference, double cameraAngle){
     double yOff = heightDifference / Math.tan(Math.toRadians(cameraAngle + ty.getDouble(0.0)));
+    if (tv.getDouble(0) == 0){
+      yOff = 0;
+    }
     return yOff;
+  }
+  public void ledON(){
+    table.getEntry("ledMode").setNumber(3);
+  }
+  public void ledOFF(){
+    table.getEntry("ledMode").setNumber(1);
   }
 }

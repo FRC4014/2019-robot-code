@@ -13,6 +13,7 @@ import frc.robot.Robot;
 public class LookPut extends Command {
 
   private final LimeLight limeLight;
+  private long time;
 
   public LookPut() {
     this.limeLight = Robot.limeLight;
@@ -23,18 +24,24 @@ public class LookPut extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    limeLight.ledOFF();
+    time = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     // limeLight.printImage();
-    limeLight.xOffset(6.5, 0, -5.375);
+    // limeLight.xOffset(6.5, 0, -5.375);
   }
 
+  @Override
+  protected void end() {
+    limeLight.ledON();
+  }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return (Robot.oi.alignButton.get() && System.currentTimeMillis() - time > 1000 );
   }
 }

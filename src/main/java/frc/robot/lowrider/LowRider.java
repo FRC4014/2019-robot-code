@@ -1,6 +1,7 @@
 package frc.robot.lowrider;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -37,6 +38,8 @@ public class LowRider extends Subsystem {
 
   public void extendLow(){
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    System.out.println("begin delay");
+    Timer.delay(.1);
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   }
   public void retractLowFront(){
@@ -46,19 +49,20 @@ public class LowRider extends Subsystem {
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
   public void extendHigh(){
-    RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
-    RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
-    RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    // RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    Timer.delay(.125);
+    RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   } 
   public void retractHighFront(){
     RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
-    RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     System.out.println("retracting front");
   }
   public void retractHighBack(){
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
-    RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    // RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     System.out.println("retracting back");
 
   }

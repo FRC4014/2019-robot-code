@@ -15,7 +15,7 @@ public class AlignByVision extends Command {
   private boolean acceptableX = false;
   private boolean acceptabley = false;
   private double angleTolerance = 1; //Placeholder
-  private double xTolerance = 1; //Placeholder
+  private double xTolerance = 2.5; //Placeholder
   private final LimeLight limeLight;
   private final AHRS navX;
   private double correctionAngleSign = 1;
@@ -51,13 +51,13 @@ public class AlignByVision extends Command {
   protected void execute() {
     double correctionAngle = targetAngle - navX.getAngle();
     double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
-    if (correctionX == 123456){ correctionX = prevX; }
-    prevX = correctionX;
     double correctiony = 20 - limeLight.yOffset(heightDifference,cameraAngle);
-    if (Math.abs(correctiony) > 1000000) { correctiony = 0;}
+    if (limeLight.yOffset(heightDifference,cameraAngle) == 0){
+      correctiony = 0;
+    }
     acceptableAngle = Math.abs(correctionAngle) < angleTolerance;
     acceptableX = Math.abs(correctionX) < xTolerance;
-    acceptabley = Math.abs(correctiony) < 1;
+    acceptabley = Math.abs(correctiony) < 5;
     double angleRCW = 0;
     double xRCW = 0;
     double yRCW = 0;
@@ -67,7 +67,7 @@ public class AlignByVision extends Command {
       double derivative = (correctionAngle - previousAngleError) / .02; // last years code uses division, but this maybe should be multiplication?
       angleRCW = (p * correctionAngle * correctionAngleSign) + (i * angleIntegral) + (d * derivative);
       angleRCW = angleRCW / 45;
-      double modAngleRCW = Math.max(.2, Math.min(angleRCW, 1));
+      double modAngleRCW = Math.max(.25, Math.min(Math.abs(angleRCW), 1));
       angleRCW = angleRCW < 0 ? -modAngleRCW : modAngleRCW;
       timeCheck = System.currentTimeMillis();
     }
@@ -76,15 +76,15 @@ public class AlignByVision extends Command {
       xIntegral += correctionX * .02;
       double derivative = (correctionX - previousXError) / .02;
       xRCW = (p * correctionX) /*+ (i * xIntegral) + (d * derivative)*/;
-      xRCW = xRCW / 1;
-      double modxRCW = Math.max(.4, Math.min(xRCW, 1));
-      xRCW = xRCW < 0 ? modxRCW : -modxRCW;
+      xRCW = xRCW / -1;
+      double modxRCW = Math.max(.4, Math.min(Math.abs(xRCW), 1));
+      xRCW = xRCW < 0 ? -modxRCW : modxRCW;
       timeCheck = System.currentTimeMillis();
     }
 
     if (!acceptabley){
       yRCW = p * correctiony;
-      double modyRCW = Math.max(.3, Math.min(yRCW, .5));
+      double modyRCW = Math.max(.3, Math.min(Math.abs(yRCW), 1));
       yRCW = yRCW / 10;
       yRCW = yRCW < 0 ? -modyRCW : modyRCW;
       timeCheck = System.currentTimeMillis();
