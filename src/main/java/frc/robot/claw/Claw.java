@@ -18,10 +18,10 @@ import frc.robot.RobotMap;
 public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  public boolean inHatchPosition;
+
   public Claw(){
-    Robot.oi.clawCargoIntakeButton.whenPressed(new CargoIntake());
-    Robot.oi.clawCargoOutputButton.whenPressed(new CargoOutput());
-    Robot.oi.hatchIntakeButton.whenPressed(new HatchInputOutput());
+    
   }
   @Override
   public void initDefaultCommand() {

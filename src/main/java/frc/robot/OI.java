@@ -11,23 +11,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 
   public Joystick driverJoystick = new Joystick(0);
-  public Button driveButton1 = new JoystickButton(driverJoystick, 1);
-  public Button driveButton2 = new JoystickButton(driverJoystick, 2);
-  public Button raiseLowButton = new JoystickButton(driverJoystick, 3);
-  public Button raiseHighButton = new JoystickButton(driverJoystick, 4);
+  public Button intakeButton = new JoystickButton(driverJoystick, 1);
+  public Button outpuButton = new JoystickButton(driverJoystick, 2);
+  public Button holdButton = new JoystickButton(driverJoystick, 3);
+  public Button driveButton4 = new JoystickButton(driverJoystick, 4);
   public Button driveButton5 = new JoystickButton(driverJoystick, 5);
   public Button driveButton6 = new JoystickButton(driverJoystick, 6);
   public Button driveButton7 = new JoystickButton(driverJoystick, 7);
   public Button driveButton8 = new JoystickButton(driverJoystick, 8);
-  public Button driveButton11 = new JoystickButton(driverJoystick, 11);
-  public Button driveButton12 = new JoystickButton(driverJoystick, 12);
-  // public Button alignButton = new JoystickButton(driverJoystick, 1);
-  // public Button lookButton = new JoystickButton(driverJoystick, 2);
-  // public Button raiseHighButton = new JoystickButton(driverJoystick, 3);
-  // public Button raiseLow = new JoystickButton(driverJoystick, 4);
+  public Button raiseLowButton = new JoystickButton(driverJoystick, 11);
+  public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
  
-
-  
   public Joystick mateJoystick = new Joystick(1); 
   // public Button frontleftButton = new JoystickButton(mateJoystick, 7);
   // public Button frontrightButton = new JoystickButton(mateJoystick, 8);
@@ -36,10 +30,6 @@ public class OI {
   public Button position1Button = new JoystickButton(mateJoystick, 1);
   public Button position2Button = new JoystickButton(mateJoystick, 2);
   public Button position3Button = new JoystickButton(mateJoystick, 3);
-  public Button clawCargoIntakeButton = new JoystickButton(mateJoystick, 4);
-  public Button clawCargoHoldButton = new JoystickButton(mateJoystick, 5);
-  public Button clawCargoOutputButton = new JoystickButton(mateJoystick, 6);
-  public Button hatchIntakeButton = new JoystickButton(mateJoystick, 7);
-  public Button hatchOutpuButton = new JoystickButton(mateJoystick, 8);
+
 
 }

@@ -8,16 +8,18 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.claw.SetClawBool;
 import frc.robot.lift.GoToPosition;
 
 public class AutonomousApproachNDeploy extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public AutonomousApproachNDeploy(double verticalPosition, double armPosition, double wristPosition, double approachAngle) {
+  public AutonomousApproachNDeploy(double verticalPosition, double armPosition, double wristPosition, double approachAngle, boolean isHatchPosition) {
     // these commands are seperate for now, but it would be faster if bits could be done at the same time
     // we should check how stable the robot is when changing lift positions before we try anything though
     addSequential(new GoToPosition(verticalPosition, armPosition, wristPosition));
+    addSequential(new SetClawBool(isHatchPosition));
     addSequential(new AlignByVision(approachAngle));
     // add stuff for deploying n whatnot
   }

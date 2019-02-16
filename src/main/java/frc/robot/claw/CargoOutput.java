@@ -34,7 +34,7 @@ public class CargoOutput extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (System.currentTimeMillis() - initTimeStamp > 10000 || Robot.oi.clawCargoHoldButton.get() || RobotMap.PDP.getCurrent(0) >= 53);
+    return (System.currentTimeMillis() - initTimeStamp > 10000 || Robot.oi.holdButton.get() || RobotMap.PDP.getCurrent(0) >= 53);
   }
 
   // Called once after isFinished returns true
