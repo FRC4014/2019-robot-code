@@ -11,10 +11,20 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 
   public Joystick driverJoystick = new Joystick(0);
-  public Button alignButton = new JoystickButton(driverJoystick, 1);
-  public Button lookButton = new JoystickButton(driverJoystick, 2);
-  public Button raiseHighButton = new JoystickButton(driverJoystick, 3);
-  public Button raiseLow = new JoystickButton(driverJoystick, 4);
+  public Button driveButton1 = new JoystickButton(driverJoystick, 1);
+  public Button driveButton2 = new JoystickButton(driverJoystick, 2);
+  public Button raiseLowButton = new JoystickButton(driverJoystick, 3);
+  public Button raiseHighButton = new JoystickButton(driverJoystick, 4);
+  public Button driveButton5 = new JoystickButton(driverJoystick, 5);
+  public Button driveButton6 = new JoystickButton(driverJoystick, 6);
+  public Button driveButton7 = new JoystickButton(driverJoystick, 7);
+  public Button driveButton8 = new JoystickButton(driverJoystick, 8);
+  public Button driveButton11 = new JoystickButton(driverJoystick, 11);
+  public Button driveButton12 = new JoystickButton(driverJoystick, 12);
+  // public Button alignButton = new JoystickButton(driverJoystick, 1);
+  // public Button lookButton = new JoystickButton(driverJoystick, 2);
+  // public Button raiseHighButton = new JoystickButton(driverJoystick, 3);
+  // public Button raiseLow = new JoystickButton(driverJoystick, 4);
  
 
   

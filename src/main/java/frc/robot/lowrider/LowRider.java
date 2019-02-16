@@ -12,7 +12,7 @@ import frc.robot.RobotMap;
 public class LowRider extends Subsystem {
   public LowRider(){
     Robot.oi.raiseHighButton.whenPressed(new RaiseHigh());
-    Robot.oi.raiseLow.whenPressed(new RaiseLow());
+    Robot.oi.raiseLowButton.whenPressed(new RaiseLow());
   }
   @Override
   public void initDefaultCommand() {

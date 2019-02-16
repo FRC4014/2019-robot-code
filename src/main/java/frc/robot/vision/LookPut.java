@@ -42,6 +42,6 @@ public class LookPut extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.oi.alignButton.get() && System.currentTimeMillis() - time > 1000 );
+    return (System.currentTimeMillis() - time > 1000 );
   }
 }
