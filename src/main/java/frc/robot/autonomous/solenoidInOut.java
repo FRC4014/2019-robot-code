@@ -9,7 +9,6 @@ package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class solenoidInOut extends Command {

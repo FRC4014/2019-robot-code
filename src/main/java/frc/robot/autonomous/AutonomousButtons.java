@@ -1,9 +1,6 @@
 package frc.robot.autonomous;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.vision.LookPut;
 
 public class AutonomousButtons {
     public AutonomousButtons (){

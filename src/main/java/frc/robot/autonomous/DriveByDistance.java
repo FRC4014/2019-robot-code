@@ -17,7 +17,6 @@ public class DriveByDistance extends Command {
   private double integral, previousError;
 //   private final double setPoint = 0;
   private boolean isInsideTolerance = false;
-  private boolean first = true;
 
   private final AHRS navX;
   private double initAngle;
@@ -61,7 +60,6 @@ public class DriveByDistance extends Command {
       tolerance = 1;
       integral = previousError = 0;
       isInsideTolerance = false;
-      first = true;
       System.out.println("p: " + p + " | i: " + i + " | d: " + d + " | setPoint: ");
   }
 
@@ -70,7 +68,6 @@ public class DriveByDistance extends Command {
       final double angle = navX.getAngle() - initAngle;
       double error = angle;
     //   error = first ? setPoint : error; // in case ahrs.reset() isn't isInsideTolerance (only observed first time, so kludging it)
-      first = false;
       double rcw = 0;
       double rotation = 0;
       speed = dp * (distance - RobotMap.DRIVE_TRAIN_ENCODER.getDistance());

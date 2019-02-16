@@ -26,7 +26,7 @@ public class RaiseLow extends Command {
   @Override
   protected void execute() {
     // System.out.println("Running raise low");
-    if (Robot.oi.raiseLow.get() && System.currentTimeMillis() - initTimeStamp > 4000 && Robot.lowRider.isFrontNearFloor()) {
+    if (Robot.oi.raiseLowButton.get() && System.currentTimeMillis() - initTimeStamp > 4000 && Robot.lowRider.isFrontNearFloor()) {
       if (botup == false ){
         System.out.println("raise low front");
         Robot.lowRider.retractLowFront();
