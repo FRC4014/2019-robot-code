@@ -23,14 +23,14 @@ public class OI {
   public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
  
   public Joystick mateJoystick = new Joystick(1); 
-  // public Button frontleftButton = new JoystickButton(mateJoystick, 7);
-  // public Button frontrightButton = new JoystickButton(mateJoystick, 8);
-  // public Button backleftButton = new JoystickButton(mateJoystick, 11);
-  // public Button backrightButton = new JoystickButton(mateJoystick, 12);
+  public Button frontleftButton = new JoystickButton(mateJoystick, 5);
+  public Button frontrightButton = new JoystickButton(mateJoystick, 3);
+  public Button backleftButton = new JoystickButton(mateJoystick, 4);
+  public Button backrightButton = new JoystickButton(mateJoystick, 6);
   public Button gButton = new JoystickButton(mateJoystick, 1);
   public Button position1Button = new JoystickButton(mateJoystick, 2);
-  public Button position2Button = new JoystickButton(mateJoystick, 3);
-  public Button position3Button = new JoystickButton(mateJoystick, 4);
+  public Button position2Button = new JoystickButton(mateJoystick, 10);
+  public Button position3Button = new JoystickButton(mateJoystick, 11);
 
 
 }
