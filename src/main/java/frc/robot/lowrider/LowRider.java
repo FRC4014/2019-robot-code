@@ -27,19 +27,9 @@ public class LowRider extends Subsystem {
     // return (RobotMap.BACK_RIGHT_ULTRASONIC.getRangeInches() < 5)
     // && (RobotMap.BACK_LEFT_ULTRASONIC .getRangeInches() < 5);
   }
-  public boolean checkFrontSolenoid(){
-    // return (RobotMap.FRONT_LOW_SOLENOID.get() == DoubleSolenoid.Value.kForward);
-    return true;
-  }
-  public boolean checkBackSolenoid(){
-    // return (RobotMap.BACK_LOW_SOLENOID.get() == DoubleSolenoid.Value.kForward);
-    return true;
-  }
 
   public void extendLow(){
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
-    System.out.println("begin delay");
-    Timer.delay(.1);
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   }
   public void retractLowFront(){
@@ -51,7 +41,6 @@ public class LowRider extends Subsystem {
   public void extendHigh(){
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     // RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
-    Timer.delay(.125);
     RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   } 

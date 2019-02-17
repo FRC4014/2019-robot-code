@@ -25,12 +25,6 @@ public class RobotMap {
 
   public static final PowerDistributionPanel PDP = new PowerDistributionPanel();
 
-  /**
-   * Encoder Resolution: AMT103 and AMT102 are 2048 (dip switchs all set to 0)
-   * Each full rotation causes 6 sensors, so ideally resolution is 341.3333. Based
-   * on experiments in 2018 we found 330 to work best, but 2019 needs to test it
-   * again.
-   */
   public static final Encoder DRIVE_TRAIN_ENCODER = 
                     new Encoder(DPIO.DRIVE_TRAIN_ENCODER_A_CHANNEL, 
                                 DPIO.DRIVE_TRAIN_ENCODER_B_CHANNEL, 
@@ -54,31 +48,31 @@ public class RobotMap {
   public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(
       DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
 
-  public static AHRS NAVX = new AHRS(SPI.Port.kMXP);
+  public static final AHRS NAVX = new AHRS(SPI.Port.kMXP);
   
-  public static Compressor compressor = new Compressor(1);
-  public static DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(4, 3);
-  public static DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(6, 1);
-  public static DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);
-  public static DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(0, 7);
+  public static final Compressor COMPRESSOR = new Compressor(1);
+  public static final DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(4, 3);
+  public static final DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(6, 1);
+  public static final DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);
+  public static final DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(0, 7);
 
-//   public static Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
-//   public static Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);
-//   public static Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
-//   public static Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
+//   public static final Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
+//   public static final Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);
+//   public static final Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
+//   public static final Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
-//   public static Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
-//   public static Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-  // public static Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-//   public static WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
-//   public static WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
-//   public static WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
+//   public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
+//   public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
+  // public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
+//   public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
+//   public static final WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
+//   public static final WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
 
   public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
 //   public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
   public static void init() {
-    compressor.setClosedLoopControl(true);
+    COMPRESSOR.setClosedLoopControl(true);
     FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
