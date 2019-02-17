@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -71,8 +72,11 @@ public class RobotMap {
   public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
 //   public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
+public static Servo CAMERA_SERVO = new Servo(0);
+
   public static void init() {
     COMPRESSOR.setClosedLoopControl(true);
+    CAMERA_SERVO.setAngle(0); // TODO figure out what the servo angles need to be
     FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);

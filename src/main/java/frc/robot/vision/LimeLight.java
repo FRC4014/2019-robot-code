@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
@@ -88,5 +89,11 @@ public class LimeLight extends Subsystem {
   }
   public void ledOFF(){
     table.getEntry("ledMode").setNumber(1);
+  }
+  public void servoForward(){
+    RobotMap.CAMERA_SERVO.setAngle(0); 
+  }
+  public void servoReverse(){
+    RobotMap.CAMERA_SERVO.setAngle(170);
   }
 }
