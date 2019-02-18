@@ -33,10 +33,10 @@ public class LowRider extends Subsystem {
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   }
   public void retractLowFront(){
-    RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
   public void retractLowBack(){
-    RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
   public void extendHigh(){
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
@@ -45,12 +45,12 @@ public class LowRider extends Subsystem {
     // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   } 
   public void retractHighFront(){
-    RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     System.out.println("retracting front");
   }
   public void retractHighBack(){
-    RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     // RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     System.out.println("retracting back");
 
