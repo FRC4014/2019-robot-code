@@ -12,6 +12,8 @@ import frc.robot.drivetrain.DriveByJoystick;
  */
 public class DriveTrain extends Subsystem {
 
+  public double targetAngle;
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new DriveByJoystick());
