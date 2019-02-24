@@ -26,10 +26,10 @@ public class AlignByVision extends Command {
   private long timeCheck;
   private double prevX;
 
-  public AlignByVision(double targetAngle) {
+  public AlignByVision() {
     this.limeLight = Robot.limeLight;
     this.navX = RobotMap.NAVX;
-    this.targetAngle = targetAngle;
+    this.targetAngle = Robot.driveTrain.targetAngle;
   }
 
   // Called just before this Command runs the first time

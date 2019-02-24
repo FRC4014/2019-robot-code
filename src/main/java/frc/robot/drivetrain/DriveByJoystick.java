@@ -26,24 +26,24 @@ public class DriveByJoystick extends Command {
   @Override
   protected void execute() {
     Robot.driveTrain.drive(Robot.oi.driverJoystick,navX.getAngle());
-    if(Robot.oi.frontleftButton.get()){
-      System.out.println("front left");
-      Robot.driveTrain.fl();
-    }
-    else if(Robot.oi.frontrightButton.get()){
-      System.out.println("front right");
-      Robot.driveTrain.fr();
-    }
-    else if(Robot.oi.backleftButton.get()){
-      System.out.println("back left");
-      Robot.driveTrain.bl();
-    }
-    else if(Robot.oi.backrightButton.get()){
-      System.out.println("back right");
-      Robot.driveTrain.br();
-    } else {
-      Robot.driveTrain.stop();
-    }
+    // if(Robot.oi.frontleftButton.get()){
+    //   System.out.println("front left");
+    //   Robot.driveTrain.fl();
+    // }
+    // else if(Robot.oi.frontrightButton.get()){
+    //   System.out.println("front right");
+    //   Robot.driveTrain.fr();
+    // }
+    // else if(Robot.oi.backleftButton.get()){
+    //   System.out.println("back left");
+    //   Robot.driveTrain.bl();
+    // }
+    // else if(Robot.oi.backrightButton.get()){
+    //   System.out.println("back right");
+    //   Robot.driveTrain.br();
+    // } else {
+    //   Robot.driveTrain.stop();
+    // }
   }
 
   // Make this return true when this Command no longer needs to run execute()
