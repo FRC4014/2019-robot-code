@@ -27,9 +27,9 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointWrist;
 
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist) {
-    this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
-    this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
-    this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
+    // this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
+    // this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
+    // this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
     this.setPointArm = setPointArm;
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;
@@ -65,9 +65,9 @@ public class LiftPositionByPotentiometer extends Command {
     if (!acceptableWrist){
       wRcw = (wp * errorWrist)/360;
     }
-    Robot.lift.moveArm(aRcw);
-    Robot.lift.moveVertical(vRcw);
-    Robot.lift.moveWrist(wRcw);
+    // Robot.lift.moveArm(aRcw);
+    // Robot.lift.moveVertical(vRcw);
+    // Robot.lift.moveWrist(wRcw);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -79,7 +79,7 @@ public class LiftPositionByPotentiometer extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.lift.stopMoving();
+    // Robot.lift.stopMoving();
   }
 
 }
