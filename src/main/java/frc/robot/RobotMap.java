@@ -38,24 +38,24 @@ public class RobotMap {
   public static final WPI_TalonSRX DRIVE_TRAIN_BACK_LEFT_MOTOR = new WPI_TalonSRX(CAN.DRIVE_TRAIN_MOTOR_BACK_LEFT);
 
   public static final MecanumDrive DRIVE_TRAIN_MECANUM = new MecanumDrive(DRIVE_TRAIN_FRONT_LEFT_MOTOR,
-      DRIVE_TRAIN_BACK_LEFT_MOTOR, DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
+   DRIVE_TRAIN_BACK_LEFT_MOTOR, DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
 
   // the following stuff is for a standard arcade drive for use when testing on
-  // 2018 bot
-  private static final SpeedControllerGroup DRIVE_TRAIN_LEFT_MOTOR_GROUP = new SpeedControllerGroup(
-      DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR);
-  private static final SpeedControllerGroup DRIVE_TRAIN_RIGHT_MOTOR_GROUP = new SpeedControllerGroup(
-      DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
-  public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(
-      DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
+  // // 2018 bot
+  // private static final SpeedControllerGroup DRIVE_TRAIN_LEFT_MOTOR_GROUP = new SpeedControllerGroup(
+  //     DRIVE_TRAIN_FRONT_LEFT_MOTOR, DRIVE_TRAIN_BACK_LEFT_MOTOR);
+  // private static final SpeedControllerGroup DRIVE_TRAIN_RIGHT_MOTOR_GROUP = new SpeedControllerGroup(
+  //     DRIVE_TRAIN_FRONT_RIGHT_MOTOR, DRIVE_TRAIN_BACK_RIGHT_MOTOR);
+  // public static final DifferentialDrive DRIVE_TRAIN_DIFFERENTIAL_DRIVE = new DifferentialDrive(
+  //     DRIVE_TRAIN_LEFT_MOTOR_GROUP, DRIVE_TRAIN_RIGHT_MOTOR_GROUP);
 
   public static final AHRS NAVX = new AHRS(SPI.Port.kMXP);
   
   public static final Compressor COMPRESSOR = new Compressor(1);
-  public static final DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(4, 3);
-  public static final DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(6, 1);
-  public static final DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);
-  public static final DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(0, 7);
+  public static final DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(2, 5);
+  public static final DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(7, 0);
+  public static final DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(4, 3);
+  public static final DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(6, 1);
 
 //   public static final Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
 //   public static final Ultrasonic FRONT_LEFT_ULTRASONIC = new Ultrasonic(1, 2);

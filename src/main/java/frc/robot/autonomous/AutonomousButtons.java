@@ -7,8 +7,8 @@ import frc.robot.vision.TurnCameraReverse;
 public class AutonomousButtons {
     public AutonomousButtons (){
         
-        Robot.oi.driveButton4.whenPressed(new TurnCameraForward());
-        Robot.oi.driveButton5.whenPressed(new TurnCameraReverse());
+        // Robot.oi.driveButton4.whenPressed(new TurnCameraForward());
+        // Robot.oi.driveButton5.whenPressed(new TurnCameraReverse());
 
         Robot.oi.gButton.whenPressed(new AutonomousGo());
         Robot.oi.lowHatch0Button.whenPressed(new AutonomousPrepare(30, 323.8, 143.8, 0, true)); // total guesses here, just for test/show
