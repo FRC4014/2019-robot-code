@@ -29,7 +29,7 @@ public class OI {
   // public Button backrightButton = new JoystickButton(mateJoystick, 6);
 
   //rocket angle is 28.75 degrees
-  public Button gButton = new JoystickButton(launchpad1, 1);
+  public Button gButton = new JoystickButton(launchpad1, 12);//1
   public Button lowHatch0Button = new JoystickButton(launchpad1, 2);
   public Button LowHatch2875Button = new JoystickButton(launchpad1, 3);
   public Button LowHatch90Button = new JoystickButton(launchpad1, 4);
@@ -40,7 +40,7 @@ public class OI {
   public Button LowHatch33125Button = new JoystickButton(launchpad1, 9);
   public Button MidHatch2875Button = new JoystickButton(launchpad1, 10);
   public Button MidHatch15125Button = new JoystickButton(launchpad1, 11);
-  public Button MidHatch20875Button = new JoystickButton(launchpad1, 12);
+  public Button MidHatch20875Button = new JoystickButton(launchpad1, 1);//12
   public Button MidHatch33125Button = new JoystickButton(launchpad1, 13);
   public Button HighHatch2875Button = new JoystickButton(launchpad1, 14);
   public Button HighHatch15125Button = new JoystickButton(launchpad1, 15);

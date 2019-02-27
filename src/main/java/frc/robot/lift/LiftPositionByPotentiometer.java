@@ -38,7 +38,8 @@ public class LiftPositionByPotentiometer extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    vp = ap = wp = .7;
+    vp = ap = wp = .3;
+    vp = 0;// temp, verticle potentiometer is not there yet
     toleranceArm = toleranceWrist = 1;
     toleranceVertical = .5;
     acceptableArm = acceptableWrist = acceptableVertical = false;
