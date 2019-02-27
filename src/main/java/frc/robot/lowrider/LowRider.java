@@ -47,12 +47,12 @@ public class LowRider extends Subsystem {
   public void retractHighFront(){
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
-    System.out.println("retracting front");
+    System.out.println(" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!retracting front");
   }
   public void retractHighBack(){
     RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kReverse);
     // RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
-    System.out.println("retracting back");
+    System.out.println(" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!retracting back");
 
   }
 }

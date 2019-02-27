@@ -28,8 +28,8 @@ public class LiftPositionByPotentiometer extends Command {
 
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist) {
     // this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
-    // this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
-    // this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
+    this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
+    this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
     this.setPointArm = setPointArm;
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;

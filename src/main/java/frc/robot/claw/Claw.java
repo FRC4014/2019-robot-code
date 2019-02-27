@@ -28,18 +28,18 @@ public class Claw extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void cargoIntake(){
-    // RobotMap.CLAW_MOTOR.set(1);
+    RobotMap.CLAW_MOTOR.set(1);
   }
   public void cargoOutput(){
-    // RobotMap.CLAW_MOTOR.set(-1);
+    RobotMap.CLAW_MOTOR.set(-1);
   }
   public void cargoHold(){
-    // RobotMap.CLAW_MOTOR.set(0);
+    RobotMap.CLAW_MOTOR.set(0);
   }
   public void hatchIntake(){
-    // RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   }
   public void hatchOutput(){
-    // RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+    RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
   }
 }

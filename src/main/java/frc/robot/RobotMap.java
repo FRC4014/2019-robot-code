@@ -63,14 +63,14 @@ public class RobotMap {
 //   public static final Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
   // public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 25, 0);
-  // public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-  // public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 360, 0);
-  // public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
-  // public static final WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
-  // public static final WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
+  public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(0, 3600, 0);
+  public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(0, 3600, 0);
+  public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
+  public static final WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
+  public static final WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
 
-  // public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
-  // public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
+  public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
+  public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
 public static Servo CAMERA_SERVO = new Servo(0);
 
