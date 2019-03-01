@@ -32,8 +32,10 @@ public class AutonomousButtons {
 
         Robot.oi.GrabCargoButton.whenPressed(new AutonomousPrepare(14.8,10.2,48.2,0,false,true));
         Robot.oi.LowCargo0Button.whenPressed(new AutonomousPrepare(24,43.9,124.3,0,false,true));
-        Robot.oi.LowCargo90Button.whenPressed(new AutonomousPrepare(24,43.9,124.3,90,false,false));
-        Robot.oi.LowCargo270Button.whenPressed(new AutonomousPrepare(24,43.9,124.3,270,false,false));
+        Robot.oi.LowCargo90ButtonRocket.whenPressed(new AutonomousPrepare(24,43.9,124.3,90,false,false));
+        Robot.oi.LowCargo270ButtonRocket.whenPressed(new AutonomousPrepare(24,43.9,124.3,270,false,false));
+        Robot.oi.LowCargo90Button.whenPressed(new AutonomousPrepare(24,43.9,124.3,90,false,true));
+        Robot.oi.LowCargo270Button.whenPressed(new AutonomousPrepare(24,43.9,124.3,270,false,true));
         Robot.oi.MidCargo90Button.whenPressed(new AutonomousPrepare(2.8,208.2,139.3,90,false,false));
         Robot.oi.MidCargo270Button.whenPressed(new AutonomousPrepare(2.8,208.2,139.3,270,false,false));
         Robot.oi.HighCargo90Button.whenPressed(new AutonomousPrepare(24,181.5,157.8,90,false,false));

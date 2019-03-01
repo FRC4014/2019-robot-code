@@ -49,8 +49,10 @@ public class OI {
   public Button HighHatch33125Button = new JoystickButton(launchpad1, 0);//inactive
   public Button GrabCargoButton = new JoystickButton(launchpad2, 5);
   public Button LowCargo0Button = new JoystickButton(launchpad1, 5);
-  public Button LowCargo90Button = new JoystickButton(launchpad2, 8);
-  public Button LowCargo270Button = new JoystickButton(launchpad1, 14);
+  public Button LowCargo90ButtonRocket = new JoystickButton(launchpad2, 8);
+  public Button LowCargo90Button = new JoystickButton(launchpad1, 13);
+  public Button LowCargo270ButtonRocket = new JoystickButton(launchpad1, 14);
+  public Button LowCargo270Button = new JoystickButton(launchpad2, 14);
   public Button MidCargo90Button = new JoystickButton(launchpad2, 6);
   public Button MidCargo270Button = new JoystickButton(launchpad1, 15);
   public Button HighCargo90Button = new JoystickButton(launchpad2, 7);
