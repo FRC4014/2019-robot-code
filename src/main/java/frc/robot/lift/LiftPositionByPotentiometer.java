@@ -12,6 +12,7 @@ public class LiftPositionByPotentiometer extends Command {
   private double wp;
 
   private Potentiometer vertical;
+  // private Potentiometer vertical;
   private Potentiometer arm;
   // private Potentiometer wrist;
   private Potentiometer wrist;
@@ -27,7 +28,7 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointWrist;
 
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist) {
-    // this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
+    this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
     this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
     this.setPointArm = setPointArm;
@@ -51,7 +52,7 @@ public class LiftPositionByPotentiometer extends Command {
   protected void execute() {
     double vRcw, aRcw, wRcw;
     vRcw = aRcw = wRcw = 0;
-    double errorVertical = setPointVertical - vertical.get();
+    double errorVertical = setPointVertical;/* - vertical.get();*/
     double errorArm = setPointArm - arm.get();
     double errorWrist = setPointWrist - wrist.get();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
