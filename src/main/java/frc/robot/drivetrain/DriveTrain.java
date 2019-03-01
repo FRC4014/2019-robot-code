@@ -13,6 +13,7 @@ import frc.robot.drivetrain.DriveByJoystick;
 public class DriveTrain extends Subsystem {
 
   public double targetAngle;
+  public double targetHeightDifference;
 
   @Override
   public void initDefaultCommand() {

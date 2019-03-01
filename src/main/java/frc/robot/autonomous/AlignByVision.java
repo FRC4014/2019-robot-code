@@ -20,7 +20,7 @@ public class AlignByVision extends Command {
   private final AHRS navX;
   private double correctionAngleSign = 1;
   private double targetAngle;
-  private double heightDifference = -.5;
+  private double heightDifference;
   private double cameraAngle = 0;
   private double xDifference = -5.375;
   private long timeCheck;
@@ -30,6 +30,7 @@ public class AlignByVision extends Command {
     this.limeLight = Robot.limeLight;
     this.navX = RobotMap.NAVX;
     this.targetAngle = Robot.driveTrain.targetAngle;
+    this.heightDifference = Robot.driveTrain.targetHeightDifference;
   }
 
   // Called just before this Command runs the first time

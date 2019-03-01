@@ -18,7 +18,7 @@ public class AutonomousPrepare extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public AutonomousPrepare(double verticalPosition, double armPosition, double wristPosition, double approachAngle, boolean isHatchPosition) {
+  public AutonomousPrepare(double verticalPosition, double armPosition, double wristPosition, double approachAngle, boolean isHatchPosition,boolean isTargetLow) {
     // these commands are seperate for now, but it would be faster if bits could be done at the same time
     // we should check how stable the robot is when changing lift positions before we try anything though
     if (armPosition < 180){
@@ -31,5 +31,10 @@ public class AutonomousPrepare extends CommandGroup {
     addSequential(new GoToPosition(verticalPosition, armPosition, wristPosition));
     addSequential(new SetClawBool(isHatchPosition));
     Robot.driveTrain.targetAngle = approachAngle;
+    if (isTargetLow){
+      Robot.driveTrain.targetHeightDifference = -17.75;
+    } else {
+      Robot.driveTrain.targetHeightDifference = -9.75;
+    }
   }
 }
