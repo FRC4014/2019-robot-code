@@ -23,37 +23,38 @@ public class OI {
   public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
  
   public Joystick launchpad1 = new Joystick(1); 
+  public Joystick launchpad2 = new Joystick(2);
   // public Button frontleftButton = new JoystickButton(mateJoystick, 5);
   // public Button frontrightButton = new JoystickButton(mateJoystick, 3);
   // public Button backleftButton = new JoystickButton(mateJoystick, 4);
   // public Button backrightButton = new JoystickButton(mateJoystick, 6);
 
   //rocket angle is 28.75 degrees
-  public Button gButton = new JoystickButton(launchpad1, 12);//1
-  public Button lowHatch0Button = new JoystickButton(launchpad1, 2);
-  public Button LowHatch2875Button = new JoystickButton(launchpad1, 3);
-  public Button LowHatch90Button = new JoystickButton(launchpad1, 4);
-  public Button LowHatch15125Button = new JoystickButton(launchpad1, 5);
-  public Button LowHatch180Button = new JoystickButton(launchpad1, 6);
-  public Button LowHatch20875Button = new JoystickButton(launchpad1, 7);
-  public Button LowHatch270Button = new JoystickButton(launchpad1, 8);
-  public Button LowHatch33125Button = new JoystickButton(launchpad1, 9);
-  public Button MidHatch2875Button = new JoystickButton(launchpad1, 10);
-  public Button MidHatch15125Button = new JoystickButton(launchpad1, 11);
-  public Button MidHatch20875Button = new JoystickButton(launchpad1, 1);//12
-  public Button MidHatch33125Button = new JoystickButton(launchpad1, 13);
-  public Button HighHatch2875Button = new JoystickButton(launchpad1, 14);
-  public Button HighHatch15125Button = new JoystickButton(launchpad1, 15);
-  public Button HighHatch20875Button = new JoystickButton(launchpad1, 16);
-  public Button HighHatch33125Button = new JoystickButton(launchpad1, 17);
-  public Button GrabCargoButton = new JoystickButton(launchpad1, 18);
-  public Button LowCargo0Button = new JoystickButton(launchpad1, 19);
-  public Button LowCargo90Button = new JoystickButton(launchpad1, 20);
-  public Button LowCargo270Button = new JoystickButton(launchpad1, 21);
-  public Button MidCargo90Button = new JoystickButton(launchpad1, 22);
-  public Button MidCargo270Button = new JoystickButton(launchpad1, 23);
-  public Button HighCargo90Button = new JoystickButton(launchpad1, 24);
-  public Button HighCargo270Button = new JoystickButton(launchpad1, 25);
+  public Button gButton = new JoystickButton(launchpad1, 16);
+  public Button lowHatch0Button = new JoystickButton(launchpad1, 4);
+  public Button LowHatch2875Button = new JoystickButton(launchpad2, 2);
+  public Button LowHatch90Button = new JoystickButton(launchpad1, 12);
+  public Button LowHatch15125Button = new JoystickButton(launchpad2, 12);
+  public Button LowHatch180Button = new JoystickButton(launchpad1, 6);//3 buttons go here
+  public Button LowHatch20875Button = new JoystickButton(launchpad1, 11);
+  public Button LowHatch270Button = new JoystickButton(launchpad1, 0);//inactive
+  public Button LowHatch33125Button = new JoystickButton(launchpad1, 0);//inactive
+  public Button MidHatch2875Button = new JoystickButton(launchpad2, 3);
+  public Button MidHatch15125Button = new JoystickButton(launchpad2, 11);
+  public Button MidHatch20875Button = new JoystickButton(launchpad1, 10);
+  public Button MidHatch33125Button = new JoystickButton(launchpad1, 0);//inactive
+  public Button HighHatch2875Button = new JoystickButton(launchpad2, 4);
+  public Button HighHatch15125Button = new JoystickButton(launchpad2, 10);
+  public Button HighHatch20875Button = new JoystickButton(launchpad1, 11);
+  public Button HighHatch33125Button = new JoystickButton(launchpad1, 0);//inactive
+  public Button GrabCargoButton = new JoystickButton(launchpad2, 5);
+  public Button LowCargo0Button = new JoystickButton(launchpad1, 5);
+  public Button LowCargo90Button = new JoystickButton(launchpad2, 8);
+  public Button LowCargo270Button = new JoystickButton(launchpad1, 14);
+  public Button MidCargo90Button = new JoystickButton(launchpad2, 6);
+  public Button MidCargo270Button = new JoystickButton(launchpad1, 15);
+  public Button HighCargo90Button = new JoystickButton(launchpad2, 7);
+  public Button HighCargo270Button = new JoystickButton(launchpad1, 8);
 
 
 

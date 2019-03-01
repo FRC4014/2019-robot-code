@@ -41,8 +41,8 @@ public class LiftPositionByPotentiometer extends Command {
   protected void initialize() {
     vp = ap = wp = .3;
     vp = 0;// temp, verticle potentiometer is not there yet
-    toleranceArm = toleranceWrist = 1;
-    toleranceVertical = .5;
+    toleranceArm = toleranceWrist = 2;
+    toleranceVertical = 1;
     acceptableArm = acceptableWrist = acceptableVertical = false;
     requires(Robot.lift);
   }
@@ -52,7 +52,7 @@ public class LiftPositionByPotentiometer extends Command {
   protected void execute() {
     double vRcw, aRcw, wRcw;
     vRcw = aRcw = wRcw = 0;
-    double errorVertical = setPointVertical;/* - vertical.get();*/
+    double errorVertical = setPointVertical - vertical.get();
     double errorArm = setPointArm - arm.get();
     double errorWrist = setPointWrist - wrist.get();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
@@ -62,14 +62,14 @@ public class LiftPositionByPotentiometer extends Command {
       aRcw = (ap * errorArm)/360;
     }
     if (!acceptableVertical){
-      vRcw = (vp * errorVertical)/360;
+      vRcw = (vp * errorVertical)/30;
     }
     if (!acceptableWrist){
       wRcw = (wp * errorWrist)/360;
     }
-    // Robot.lift.moveArm(aRcw);
-    // Robot.lift.moveVertical(vRcw);
-    // Robot.lift.moveWrist(wRcw);
+    Robot.lift.moveArm(aRcw);
+    Robot.lift.moveVertical(vRcw);
+    Robot.lift.moveWrist(wRcw);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -81,7 +81,7 @@ public class LiftPositionByPotentiometer extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    // Robot.lift.stopMoving();
+    Robot.lift.stopMoving();
   }
 
 }
