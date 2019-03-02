@@ -26,21 +26,22 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointArm;
   private double setPointVertical;
   private double setPointWrist;
+  private boolean justVertical;
 
-  public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist) {
+  public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
     this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
     this.setPointArm = setPointArm;
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;
+    this.justVertical = justVertical;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     vp = ap = wp = .3;
-    vp = 0;// temp, verticle potentiometer is not there yet
     toleranceArm = toleranceWrist = 2;
     toleranceVertical = 1;
     acceptableArm = acceptableWrist = acceptableVertical = false;
@@ -58,13 +59,13 @@ public class LiftPositionByPotentiometer extends Command {
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
-    if (!acceptableArm){
+    if (!acceptableArm && !justVertical){
       aRcw = (ap * errorArm)/360;
     }
     if (!acceptableVertical){
       vRcw = (vp * errorVertical)/30;
     }
-    if (!acceptableWrist){
+    if (!acceptableWrist && !justVertical){
       wRcw = (wp * errorWrist)/360;
     }
     Robot.lift.moveArm(aRcw);
@@ -75,7 +76,7 @@ public class LiftPositionByPotentiometer extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (acceptableArm && acceptableVertical && acceptableWrist);
+    return (acceptableVertical && ((acceptableWrist && acceptableArm) || justVertical));
   }
 
   // Called once after isFinished returns true
