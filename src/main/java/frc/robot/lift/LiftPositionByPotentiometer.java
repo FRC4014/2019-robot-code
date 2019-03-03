@@ -41,11 +41,11 @@ public class LiftPositionByPotentiometer extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    vp = ap = wp = .3;
+    vp = ap = wp = .5;
     toleranceArm = toleranceWrist = 2;
-    toleranceVertical = 1;
+    toleranceVertical = 5;
     acceptableArm = acceptableWrist = acceptableVertical = false;
-    requires(Robot.lift);
+    // requires(Robot.lift);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -60,24 +60,27 @@ public class LiftPositionByPotentiometer extends Command {
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
     if (!acceptableArm && !justVertical){
-      aRcw = (ap * errorArm)/90;
+      aRcw = (ap * errorArm)/45;
     }
     if (!acceptableVertical){
       vRcw = (vp * errorVertical)/-30;
     }
     if (!acceptableWrist && !justVertical){
-      wRcw = (wp * errorWrist)/-90;
+      wRcw = (wp * errorWrist)/-120;
     }
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);
     Robot.lift.moveWrist(wRcw);
+    System.out.println("arm error: " + errorArm + " aRcw= " + aRcw);
+    System.out.println("vertical error: " + errorVertical + " vRcw= " + vRcw);
+    System.out.println("wrist error: " + errorWrist + " wRcw= " + wRcw);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    // return (acceptableVertical && ((acceptableWrist && acceptableArm) || justVertical));
-    return (Robot.oi.DoneButton.get());
+    return ((acceptableVertical && ((acceptableWrist && acceptableArm) || justVertical)) || Robot.oi.DoneButton.get());
+    // return (Robot.oi.DoneButton.get());
   }
 
   // Called once after isFinished returns true

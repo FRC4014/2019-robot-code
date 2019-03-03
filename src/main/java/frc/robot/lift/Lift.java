@@ -20,14 +20,14 @@ public class Lift extends Subsystem {
     RobotMap.LIFT_VERTICAL_MOTOR.set(movement);
   }
   public void moveArm(double movement){
-    RobotMap.LIFT_ARM_MOTOR.set(movement + .1);
+    RobotMap.LIFT_ARM_MOTOR.set(movement - .1);
   }
   public void moveWrist(double movement){
     RobotMap.LIFT_WRIST_MOTOR.set(movement);
   }
   public void stopMoving(){
     RobotMap.LIFT_ARM_MOTOR.set(0);
-    RobotMap.LIFT_VERTICAL_MOTOR.set(.1);
+    RobotMap.LIFT_VERTICAL_MOTOR.set(-.1);
     RobotMap.LIFT_WRIST_MOTOR.set(0);
   }
 }
