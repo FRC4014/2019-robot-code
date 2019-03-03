@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 
-  public Joystick driverJoystick = new Joystick(0);
+  public Joystick driverJoystick = new Joystick(3);
   public Button intakeButton = new JoystickButton(driverJoystick, 1);
   public Button outpuButton = new JoystickButton(driverJoystick, 2);
   public Button holdButton = new JoystickButton(driverJoystick, 3);
@@ -22,8 +22,8 @@ public class OI {
   public Button raiseLowButton = new JoystickButton(driverJoystick, 11);
   public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
  
-  public Joystick launchpad1 = new Joystick(1); 
-  public Joystick launchpad2 = new Joystick(2);
+  public Joystick launchpad1 = new Joystick(0); 
+  public Joystick launchpad2 = new Joystick(1);
   // public Button frontleftButton = new JoystickButton(mateJoystick, 5);
   // public Button frontrightButton = new JoystickButton(mateJoystick, 3);
   // public Button backleftButton = new JoystickButton(mateJoystick, 4);
@@ -58,6 +58,7 @@ public class OI {
   public Button HighCargo90Button = new JoystickButton(launchpad2, 7);
   public Button HighCargo270Button = new JoystickButton(launchpad1, 8);
 
+  public Button DoneButton = new JoystickButton(launchpad2, 1);
 
 
 
