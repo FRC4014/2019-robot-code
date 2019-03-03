@@ -36,6 +36,7 @@ public class LiftPositionByPotentiometer extends Command {
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;
     this.justVertical = justVertical;
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time

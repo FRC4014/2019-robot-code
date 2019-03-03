@@ -2,8 +2,6 @@ package frc.robot.autonomous;
 
 import frc.robot.Robot;
 import frc.robot.lift.PrintPosition;
-import frc.robot.vision.TurnCameraForward;
-import frc.robot.vision.TurnCameraReverse;
 
 public class AutonomousButtons {
     public AutonomousButtons (){
