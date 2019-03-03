@@ -60,13 +60,13 @@ public class LiftPositionByPotentiometer extends Command {
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
     if (!acceptableArm && !justVertical){
-      aRcw = (ap * errorArm)/360;
+      aRcw = (ap * errorArm)/90;
     }
     if (!acceptableVertical){
-      vRcw = (vp * errorVertical)/30;
+      vRcw = (vp * errorVertical)/-30;
     }
     if (!acceptableWrist && !justVertical){
-      wRcw = (wp * errorWrist)/360;
+      wRcw = (wp * errorWrist)/-90;
     }
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);
