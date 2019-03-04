@@ -27,10 +27,11 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointVertical;
   private double setPointWrist;
   private boolean justVertical;
+  private boolean notVertical;
 
   private double time;
 
-  public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical) {
+  public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical,boolean notVertical) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
     this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
@@ -38,6 +39,7 @@ public class LiftPositionByPotentiometer extends Command {
     this.setPointVertical = setPointVertical;
     this.setPointWrist = setPointWrist;
     this.justVertical = justVertical;
+    this.notVertical = notVertical;
     requires(Robot.lift);
   }
 
@@ -49,6 +51,13 @@ public class LiftPositionByPotentiometer extends Command {
     toleranceVertical = 5;
     acceptableArm = acceptableWrist = acceptableVertical = false;
     time = System.currentTimeMillis();
+    if (justVertical){
+      setPointArm = arm.get();
+      setPointWrist = wrist.get();
+    }
+    if (notVertical){
+      setPointVertical = vertical.get();
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -62,13 +71,13 @@ public class LiftPositionByPotentiometer extends Command {
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
-    if (!acceptableArm && !justVertical){
+    if (!acceptableArm){
       aRcw = (ap * errorArm)/45;
     }
     if (!acceptableVertical){
       vRcw = (vp * errorVertical)/-15;
     }
-    if (!acceptableWrist && !justVertical){
+    if (!acceptableWrist){
       wRcw = (wp * errorWrist)/-180;
     }
     Robot.lift.moveArm(aRcw);
@@ -82,7 +91,7 @@ public class LiftPositionByPotentiometer extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((acceptableVertical && justVertical));
+    return ((acceptableVertical && justVertical) || (acceptableArm && acceptableWrist && notVertical));
     // return (Robot.oi.DoneButton.get());
   }
 

@@ -15,8 +15,8 @@ public class OI {
   public Button outpuButton = new JoystickButton(driverJoystick, 2);
   public Button holdButton = new JoystickButton(driverJoystick, 3);
   public Button frontleftButton = new JoystickButton(driverJoystick, 4);
-  public Button LowCargo90ButtonRocket = new JoystickButton(driverJoystick, 5);
-  public Button gButton = new JoystickButton(driverJoystick, 6);
+  // public Button LowCargo90ButtonRocket = new JoystickButton(driverJoystick, 5);
+  // public Button gButton = new JoystickButton(driverJoystick, 6);
   public Button backleftButton = new JoystickButton(driverJoystick, 7);
   public Button backrightButton = new JoystickButton(driverJoystick, 8);
   public Button raiseLowButton = new JoystickButton(driverJoystick, 11);
@@ -30,7 +30,7 @@ public class OI {
   // public Button backrightButton = new JoystickButton(mateJoystick, 6);
 
   //rocket angle is 28.75 degrees
-  // public Button gButton = new JoystickButton(launchpad1, 16);
+  public Button gButton = new JoystickButton(launchpad1, 16);
   public Button lowHatch0Button = new JoystickButton(launchpad1, 4);
   public Button LowHatch2875Button = new JoystickButton(launchpad2, 2);
   public Button LowHatch90Button = new JoystickButton(launchpad1, 12);
@@ -49,7 +49,7 @@ public class OI {
   public Button HighHatch33125Button = new JoystickButton(launchpad1, 1);
   public Button GrabCargoButton = new JoystickButton(launchpad2, 5);
   public Button LowCargo0Button = new JoystickButton(launchpad1, 5);
-  // public Button LowCargo90ButtonRocket = new JoystickButton(launchpad2, 8);
+  public Button LowCargo90ButtonRocket = new JoystickButton(launchpad2, 8);
   public Button LowCargo90Button = new JoystickButton(launchpad1, 13);
   public Button LowCargo270ButtonRocket = new JoystickButton(launchpad1, 14);
   public Button LowCargo270Button = new JoystickButton(launchpad2, 14);

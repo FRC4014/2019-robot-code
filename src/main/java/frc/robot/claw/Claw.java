@@ -9,14 +9,14 @@ package frc.robot.claw;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class Claw extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+
   public boolean inHatchPosition;
 
   public Claw(){
@@ -24,8 +24,8 @@ public class Claw extends Subsystem {
   }
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    Robot.oi.intakeButton.whenPressed(new SmartIntakeOutput(true));
+    Robot.oi.outpuButton.whenPressed(new SmartIntakeOutput(false));
   }
   public void cargoIntake(){
     RobotMap.CLAW_MOTOR.set(1);
@@ -41,5 +41,11 @@ public class Claw extends Subsystem {
   }
   public void hatchOutput(){
     RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
+  }
+  public void setHatchPosition(boolean hatch){
+    inHatchPosition = hatch;
+  }
+  public boolean getHatchPosition(){
+    return inHatchPosition;
   }
 }

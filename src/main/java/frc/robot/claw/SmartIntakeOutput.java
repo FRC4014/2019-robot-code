@@ -16,7 +16,7 @@ public class SmartIntakeOutput extends CommandGroup {
    */
   public SmartIntakeOutput(boolean isIntake) {
     if (isIntake){
-      if (Robot.claw.inHatchPosition){
+      if (Robot.claw.getHatchPosition()){
         addSequential(new HatchInput());
       } 
       else 
@@ -26,7 +26,7 @@ public class SmartIntakeOutput extends CommandGroup {
     } 
     else
     {
-      if (Robot.claw.inHatchPosition){
+      if (Robot.claw.getHatchPosition()){
         addSequential(new HatchOutput());
       } 
       else 

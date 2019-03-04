@@ -22,9 +22,9 @@ public class SetClawBool extends Command {
   @Override
   protected void initialize() {
     if (isHatchPosition){
-      Robot.claw.inHatchPosition = true;
+      Robot.claw.setHatchPosition(true);
     } else {
-      Robot.claw.inHatchPosition = false;
+      Robot.claw.setHatchPosition(false);
     }
   }
 

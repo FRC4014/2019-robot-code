@@ -8,6 +8,7 @@
 package frc.robot.lift;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class PrintPosition extends Command {
@@ -24,6 +25,7 @@ public class PrintPosition extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    RobotMap.LIFT_VERTICAL_MOTOR.set(1);
     System.out.println("Vertical: " + RobotMap.LIFT_VERTICAL_POTENTIOMETER.get() +
     " Arm: " + RobotMap.LIFT_ARM_POTENTIOMETER.get() +
     " Wrist: " + RobotMap.LIFT_WRIST_POTENTIOMETER.get());
