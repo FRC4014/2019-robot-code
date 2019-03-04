@@ -28,10 +28,10 @@ public class Claw extends Subsystem {
     Robot.oi.outpuButton.whenPressed(new SmartIntakeOutput(false));
   }
   public void cargoIntake(){
-    RobotMap.CLAW_MOTOR.set(1);
+    RobotMap.CLAW_MOTOR.set(-1);
   }
   public void cargoOutput(){
-    RobotMap.CLAW_MOTOR.set(-1);
+    RobotMap.CLAW_MOTOR.set(1);
   }
   public void cargoHold(){
     RobotMap.CLAW_MOTOR.set(0);

@@ -64,7 +64,7 @@ public class RobotMap {
 
   public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 40, 0);
   public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(1, -1111, 296);
-  public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(2, -3600, 3500);
+  public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(2, -3600, 350);
   public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
   public static final WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
   public static final WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);

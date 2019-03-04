@@ -15,13 +15,17 @@ public class SmartIntakeOutput extends CommandGroup {
    * Add your docs here.
    */
   public SmartIntakeOutput(boolean isIntake) {
+    System.out.println("running smart intake");
     if (isIntake){
+      System.out.println("running intake");
       if (Robot.claw.getHatchPosition()){
+        System.out.println("in hatch position");
         addSequential(new HatchInput());
       } 
       else 
       {
         addSequential(new CargoIntake());
+        System.out.println("cargo position");
       }
     } 
     else
