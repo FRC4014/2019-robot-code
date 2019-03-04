@@ -22,20 +22,22 @@ public class AlignByVision extends Command {
   private double targetAngle;
   private double heightDifference;
   private double cameraAngle = 0;
-  private double xDifference = -5.375;
+  private double xDifference = -9.375;
   private long timeCheck;
   private double prevX;
 
   public AlignByVision() {
     this.limeLight = Robot.limeLight;
     this.navX = RobotMap.NAVX;
-    this.targetAngle = Robot.driveTrain.targetAngle;
-    this.heightDifference = Robot.driveTrain.targetHeightDifference;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    this.targetAngle = -1* Robot.driveTrain.getAngle();
+    this.heightDifference = Robot.driveTrain.getHeight();
+    System.out.println("target angle is " + targetAngle);
+    System.out.println("height difference is " + heightDifference);
     p = 1;
     i = 0;
     d = 0;
@@ -52,7 +54,7 @@ public class AlignByVision extends Command {
   protected void execute() {
     double correctionAngle = targetAngle - navX.getAngle();
     double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
-    double correctiony = 20 - limeLight.yOffset(heightDifference,cameraAngle);
+    double correctiony = 40 - limeLight.yOffset(heightDifference,cameraAngle);
     if (limeLight.yOffset(heightDifference,cameraAngle) == 0){
       correctiony = 0;
     }
@@ -86,7 +88,7 @@ public class AlignByVision extends Command {
     if (!acceptabley){
       yRCW = p * correctiony;
       double modyRCW = Math.max(.3, Math.min(Math.abs(yRCW), 1));
-      yRCW = yRCW / 10;
+      yRCW = yRCW / 20;
       yRCW = yRCW < 0 ? -modyRCW : modyRCW;
       timeCheck = System.currentTimeMillis();
     }

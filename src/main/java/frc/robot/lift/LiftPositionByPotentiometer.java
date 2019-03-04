@@ -28,6 +28,8 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointWrist;
   private boolean justVertical;
 
+  private double time;
+
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
@@ -46,7 +48,7 @@ public class LiftPositionByPotentiometer extends Command {
     toleranceArm = toleranceWrist = 2;
     toleranceVertical = 5;
     acceptableArm = acceptableWrist = acceptableVertical = false;
-    // requires(Robot.lift);
+    time = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -64,10 +66,10 @@ public class LiftPositionByPotentiometer extends Command {
       aRcw = (ap * errorArm)/45;
     }
     if (!acceptableVertical){
-      vRcw = (vp * errorVertical)/-30;
+      vRcw = (vp * errorVertical)/-15;
     }
     if (!acceptableWrist && !justVertical){
-      wRcw = (wp * errorWrist)/-120;
+      wRcw = (wp * errorWrist)/-180;
     }
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);
@@ -80,7 +82,7 @@ public class LiftPositionByPotentiometer extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((acceptableVertical && ((acceptableWrist && acceptableArm) || justVertical)) || Robot.oi.DoneButton.get());
+    return ((acceptableVertical && justVertical));
     // return (Robot.oi.DoneButton.get());
   }
 

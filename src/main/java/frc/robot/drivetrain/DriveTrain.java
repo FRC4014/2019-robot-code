@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {
 
   public void drive(Joystick joystick, Double gyroAngle){
     RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(),  joystick.getY(), -joystick.getZ());
-    // System.out.println(gyroAngle);
+    System.out.println(targetAngle +" "+ targetHeightDifference);
     // System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
     // RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
   }
@@ -44,5 +44,18 @@ public class DriveTrain extends Subsystem {
 
   public void resetEncoders(){
     RobotMap.DRIVE_TRAIN_ENCODER.reset();
+  }
+
+  public void setAngle(double tar){
+    targetAngle = tar;
+  }
+  public double getAngle(){
+    return targetAngle;
+  }
+  public void setHeight(double hight){
+    targetHeightDifference = hight;
+  }
+  public double getHeight(){
+    return targetHeightDifference;
   }
 }

@@ -95,7 +95,7 @@ public class LimeLight extends Subsystem {
     table.getEntry("pipeline").setNumber(0);
   }
   public void servoReverse(){
-    RobotMap.CAMERA_SERVO.setAngle(100);
+    RobotMap.CAMERA_SERVO.setAngle(180);
     table.getEntry("pipeline").setNumber(1);
   }
 }

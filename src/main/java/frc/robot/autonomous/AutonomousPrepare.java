@@ -13,6 +13,7 @@ import frc.robot.claw.SetClawBool;
 import frc.robot.lift.GoToPosition;
 import frc.robot.vision.TurnCameraForward;
 import frc.robot.vision.TurnCameraReverse;
+import frc.robot.drivetrain.SetThings;
 
 public class AutonomousPrepare extends CommandGroup {
   /**
@@ -28,13 +29,16 @@ public class AutonomousPrepare extends CommandGroup {
     {
       addSequential(new TurnCameraReverse());
     }
-    addSequential(new GoToPosition(verticalPosition, armPosition, wristPosition));
     addSequential(new SetClawBool(isHatchPosition));
-    Robot.driveTrain.targetAngle = approachAngle;
+    // System.out.println("approach angle set to" + approachAngle);
+    // Robot.driveTrain.targetAngle = approachAngle;
     if (isTargetLow){
-      Robot.driveTrain.targetHeightDifference = -17.75;
+      // Robot.driveTrain.targetHeightDifference = -17.75;
+      addSequential(new SetThings(-17.75, approachAngle));
     } else {
-      Robot.driveTrain.targetHeightDifference = -9.75;
+      // Robot.driveTrain.targetHeightDifference = -9.75;
+      addSequential(new SetThings(-9.75, approachAngle));
     }
+    addSequential(new GoToPosition(verticalPosition, armPosition, wristPosition));
   }
 }
