@@ -62,8 +62,8 @@ public class RobotMap {
 //   public static final Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
 //   public static final Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
-  public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 40, 0);
-  public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(1, -1111, 296);
+  public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 42, 0);
+  public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(1, -1228.5, 334);
   public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(2, 3600, -1559);
   public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
   public static final WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
