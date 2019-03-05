@@ -78,7 +78,7 @@ public class LiftPositionByPotentiometer extends Command {
       vRcw = (vp * errorVertical)/-15;
     }
     if (!acceptableWrist){
-      wRcw = (wp * errorWrist)/45;
+      wRcw = (wp * errorWrist)/90;
     }
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);
