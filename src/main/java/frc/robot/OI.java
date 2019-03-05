@@ -17,8 +17,8 @@ public class OI {
   public Button frontleftButton = new JoystickButton(driverJoystick, 4);
   // public Button LowCargo90ButtonRocket = new JoystickButton(driverJoystick, 5);
   // public Button gButton = new JoystickButton(driverJoystick, 6);
-  public Button backleftButton = new JoystickButton(driverJoystick, 7);
-  public Button backrightButton = new JoystickButton(driverJoystick, 8);
+  public Button justForwardButton = new JoystickButton(driverJoystick, 7);
+  public Button justBackButton = new JoystickButton(driverJoystick, 8);
   public Button raiseLowButton = new JoystickButton(driverJoystick, 11);
   public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
  
