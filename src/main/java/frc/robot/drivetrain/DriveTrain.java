@@ -26,6 +26,9 @@ public class DriveTrain extends Subsystem {
     // System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
     RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
   }
+  public void driveStraight(double speed){
+    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(speed, 0, 0);
+  }
   public void fl(){
     RobotMap.DRIVE_TRAIN_FRONT_LEFT_MOTOR.set(1);
   }

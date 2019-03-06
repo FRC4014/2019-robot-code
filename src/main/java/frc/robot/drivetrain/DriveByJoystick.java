@@ -25,7 +25,14 @@ public class DriveByJoystick extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.drive(Robot.oi.driverJoystick,navX.getAngle());
+    if(Robot.oi.justForwardButton.get()){
+      Robot.driveTrain.driveStraight(-.3);
+    }
+    else if (Robot.oi.justBackButton.get()){
+      Robot.driveTrain.driveStraight(.3);
+    } else {
+      Robot.driveTrain.drive(Robot.oi.driverJoystick,navX.getAngle());
+    }
     // if(Robot.oi.frontleftButton.get()){
     //   System.out.println("front left");
     //   Robot.driveTrain.fl();
