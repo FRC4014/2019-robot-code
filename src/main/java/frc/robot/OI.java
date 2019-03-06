@@ -36,7 +36,7 @@ public class OI {
   public Button LowHatch90Button = new JoystickButton(launchpad1, 12);
   public Button LowHatch15125Button = new JoystickButton(launchpad2, 12);
   public Button LowHatch180Button = new JoystickButton(launchpad2, 1);//3 buttons go here
-  public Button LowHatch20875Button = new JoystickButton(launchpad1, 11);
+  public Button LowHatch20875Button = new JoystickButton(launchpad1, 9);
   public Button LowHatch270Button = new JoystickButton(launchpad2, 13);
   public Button LowHatch33125Button = new JoystickButton(launchpad1, 3);
   public Button MidHatch2875Button = new JoystickButton(launchpad2, 3);

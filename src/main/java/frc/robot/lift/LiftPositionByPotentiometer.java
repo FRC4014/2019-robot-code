@@ -73,7 +73,7 @@ public class LiftPositionByPotentiometer extends Command {
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
     if (!acceptableArm){
       aRcw = (ap * errorArm)/-50;
-      aRcw = Math.signum(aRcw) * Math.max(.3, Math.abs(aRcw));
+      aRcw = Math.signum(aRcw) * Math.max(.2, Math.abs(aRcw));
     }
     if (!acceptableVertical){
       vRcw = (vp * errorVertical)/15;
