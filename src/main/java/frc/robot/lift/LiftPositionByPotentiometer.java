@@ -28,15 +28,15 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointWrist;
   private boolean justVertical;
   private boolean notVertical;
+  double vRcw, aRcw, wRcw;
 
-  private double time;
 
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical,boolean notVertical) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
     this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
     this.setPointArm = setPointArm;
-    this.setPointVertical = setPointVertical;
+    this.setPointVertical = setPointVertical + 1;
     this.setPointWrist = setPointWrist;
     this.justVertical = justVertical;
     this.notVertical = notVertical;
@@ -47,10 +47,10 @@ public class LiftPositionByPotentiometer extends Command {
   @Override
   protected void initialize() {
     vp = ap = wp = .5;
-    toleranceArm = toleranceWrist = 2;
-    toleranceVertical = 5;
+    toleranceArm = 1;
+    toleranceWrist = 2;
+    toleranceVertical = 1;
     acceptableArm = acceptableWrist = acceptableVertical = false;
-    time = System.currentTimeMillis();
     if (justVertical){
       setPointArm = arm.get();
       setPointWrist = wrist.get();
@@ -63,20 +63,24 @@ public class LiftPositionByPotentiometer extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double vRcw, aRcw, wRcw;
-    vRcw = aRcw = wRcw = 0;
+    wRcw = 0;
+    double minA,maxA;
+    minA = .277;
+    maxA = 1;
     double errorVertical = setPointVertical - vertical.get();
-    double errorArm = setPointArm - arm.get();
+    double errorArm = setPointArm - arm.get() + (4 * Math.signum(180 - setPointArm));
     double errorWrist = setPointWrist - wrist.get();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
     if (!acceptableArm){
-      aRcw = (ap * errorArm)/-50;
-      aRcw = Math.signum(aRcw) * Math.max(.2, Math.abs(aRcw));
+      // aRcw = (ap * errorArm)/-5;
+      aRcw = -1 *((((maxA-minA)/317)*errorArm));
+      aRcw = Math.signum(aRcw) * Math.min(maxA, Math.max(minA, Math.abs(aRcw) + minA));
     }
     if (!acceptableVertical){
-      vRcw = (vp * errorVertical)/15;
+      vRcw = (vp * errorVertical)/8;
+      vRcw = Math.signum(vRcw) * Math.min(.7, Math.abs(vRcw));
     }
     if (!acceptableWrist){
       wRcw = (wp * errorWrist)/90;
