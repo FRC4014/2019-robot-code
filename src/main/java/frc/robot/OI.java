@@ -14,20 +14,21 @@ public class OI {
   public Button intakeButton = new JoystickButton(driverJoystick, 1);
   public Button outpuButton = new JoystickButton(driverJoystick, 2);
   public Button holdButton = new JoystickButton(driverJoystick, 3);
-  public Button frontleftButton = new JoystickButton(driverJoystick, 4);
-  // public Button LowCargo90ButtonRocket = new JoystickButton(driverJoystick, 5);
-  // public Button gButton = new JoystickButton(driverJoystick, 6);
+  public Button limeLightButton = new JoystickButton(driverJoystick, 4);
+  public Button hatchInButton = new JoystickButton(driverJoystick, 5);
+  public Button hatchOutButton = new JoystickButton(driverJoystick, 6);
   public Button justForwardButton = new JoystickButton(driverJoystick, 7);
   public Button justBackButton = new JoystickButton(driverJoystick, 8);
   public Button raiseLowButton = new JoystickButton(driverJoystick, 11);
   public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
+
+  // public Button frontleftButton = new JoystickButton(driverJoystick, 7);
+  // public Button frontrightButton = new JoystickButton(driverJoystick, 8);
+  // public Button backleftButton = new JoystickButton(driverJoystick, 11);
+  // public Button backrightButton = new JoystickButton(driverJoystick, 12);
  
   public Joystick launchpad1 = new Joystick(1); 
   public Joystick launchpad2 = new Joystick(2);
-  // public Button frontleftButton = new JoystickButton(mateJoystick, 5);
-  // public Button frontrightButton = new JoystickButton(mateJoystick, 3);
-  // public Button backleftButton = new JoystickButton(mateJoystick, 4);
-  // public Button backrightButton = new JoystickButton(mateJoystick, 6);
 
   //rocket angle is 28.75 degrees
   public Button gButton = new JoystickButton(launchpad1, 16);

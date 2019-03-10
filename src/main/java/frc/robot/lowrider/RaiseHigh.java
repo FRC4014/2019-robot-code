@@ -28,7 +28,7 @@ public class RaiseHigh extends Command {
   @Override
   protected void execute() {
     // System.out.println("running raise high");
-    if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 4000 && Robot.lowRider.isFrontNearFloor()){
+    if (Robot.oi.raiseHighButton.get() && System.currentTimeMillis() - initTimeStamp > 2000 && Robot.lowRider.isFrontNearFloor()){
       // System.out.println("button pressed");
       if (topUp == false){
         System.out.println("front solenoid extended");

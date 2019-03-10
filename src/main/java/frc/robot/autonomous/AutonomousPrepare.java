@@ -28,6 +28,7 @@ public class AutonomousPrepare extends CommandGroup {
     else
     {
       addSequential(new TurnCameraReverse());
+      approachAngle = approachAngle + 180; 
     }
     addSequential(new SetClawBool(isHatchPosition));
     // System.out.println("approach angle set to" + approachAngle);
@@ -35,6 +36,7 @@ public class AutonomousPrepare extends CommandGroup {
     if (isTargetLow){
       // Robot.driveTrain.targetHeightDifference = -17.75;
       addSequential(new SetThings(-17.75, approachAngle));
+      
     } else {
       // Robot.driveTrain.targetHeightDifference = -9.75;
       addSequential(new SetThings(-9.75, approachAngle));

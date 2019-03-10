@@ -21,25 +21,25 @@ public class DriveTrain extends Subsystem {
   }
 
   public void drive(Joystick joystick, Double gyroAngle){
-    // RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(),  joystick.getY(), -joystick.getZ());
+    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(),  joystick.getY(), -joystick.getZ());
     // System.out.println(targetAngle +" "+ targetHeightDifference);s
     // System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
-    RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
+    // RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
   }
   public void driveStraight(double speed){
     RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, speed, 0);
   }
   public void fl(){
-    RobotMap.DRIVE_TRAIN_FRONT_LEFT_MOTOR.set(1);
+    RobotMap.DRIVE_TRAIN_FRONT_LEFT_MOTOR.set(.6);
   }
   public void fr(){
-    RobotMap.DRIVE_TRAIN_FRONT_RIGHT_MOTOR.set(1);
+    RobotMap.DRIVE_TRAIN_FRONT_RIGHT_MOTOR.set(.6);
   }
   public void bl(){
-    RobotMap.DRIVE_TRAIN_BACK_LEFT_MOTOR.set(1);
+    RobotMap.DRIVE_TRAIN_BACK_LEFT_MOTOR.set(.6);
   }
   public void br(){
-    RobotMap.DRIVE_TRAIN_BACK_RIGHT_MOTOR.set(1);
+    RobotMap.DRIVE_TRAIN_BACK_RIGHT_MOTOR.set(.6);
   }
   public void stop(){
     RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(0, 0, 0);

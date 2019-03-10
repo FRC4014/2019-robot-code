@@ -1,7 +1,6 @@
 package frc.robot.lowrider;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-// import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -30,6 +29,7 @@ public class LowRider extends Subsystem {
 
   public void extendLow(){
     RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    Timer.delay(.1);
     RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   }
   public void retractLowFront(){
@@ -41,6 +41,7 @@ public class LowRider extends Subsystem {
   public void extendHigh(){
     RobotMap.BACK_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     // RobotMap.BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
+    Timer.delay(.15);
     RobotMap.FRONT_HIGH_SOLENOID.set(DoubleSolenoid.Value.kForward);
     // RobotMap.FRONT_LOW_SOLENOID.set(DoubleSolenoid.Value.kForward);
   } 

@@ -65,17 +65,17 @@ public class LiftPositionByPotentiometer extends Command {
   protected void execute() {
     wRcw = 0;
     double minA,maxA;
-    minA = .277;
+    minA = .10;
     maxA = 1;
     double errorVertical = setPointVertical - vertical.get();
-    double errorArm = setPointArm - arm.get() + (4 * Math.signum(180 - setPointArm));
+    double errorArm = setPointArm - arm.get() + (2 * Math.signum(180 - setPointArm));
     double errorWrist = setPointWrist - wrist.get();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
     acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
     if (!acceptableArm){
       // aRcw = (ap * errorArm)/-5;
-      aRcw = -1 *((((maxA-minA)/317)*errorArm));
+      aRcw = ((((maxA-minA)/315)*errorArm));
       aRcw = Math.signum(aRcw) * Math.min(maxA, Math.max(minA, Math.abs(aRcw) + minA));
     }
     if (!acceptableVertical){
@@ -83,7 +83,7 @@ public class LiftPositionByPotentiometer extends Command {
       vRcw = Math.signum(vRcw) * Math.min(.7, Math.abs(vRcw));
     }
     if (!acceptableWrist){
-      wRcw = (wp * errorWrist)/90;
+      wRcw = (wp * errorWrist)/80 ;
     }
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);

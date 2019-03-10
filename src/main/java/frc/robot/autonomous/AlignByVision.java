@@ -22,7 +22,7 @@ public class AlignByVision extends Command {
   private double targetAngle;
   private double heightDifference;
   private double cameraAngle = 0;
-  private double xDifference = -9.375;
+  private double xDifference = 9.375;
   private long timeCheck;
   private double prevX;
 
@@ -54,7 +54,7 @@ public class AlignByVision extends Command {
   protected void execute() {
     double correctionAngle = targetAngle - navX.getAngle();
     double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
-    double correctiony = 40 - limeLight.yOffset(heightDifference,cameraAngle);
+    double correctiony = 30 - limeLight.yOffset(heightDifference,cameraAngle);
     if (limeLight.yOffset(heightDifference,cameraAngle) == 0){
       correctiony = 0;
     }
@@ -103,7 +103,7 @@ public class AlignByVision extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (acceptableAngle && acceptableX && acceptabley && System.currentTimeMillis() - timeCheck > 500);
+    return ((acceptableAngle && acceptableX && acceptabley && System.currentTimeMillis() - timeCheck > 500) || Robot.oi.lowHatch0Button.get());
   }
 
   // Called once after isFinished returns true
