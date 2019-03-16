@@ -22,14 +22,14 @@ public class AutonomousPrepare extends CommandGroup {
   public AutonomousPrepare(double verticalPosition, double armPosition, double wristPosition, double approachAngle, boolean isHatchPosition,boolean isTargetLow) {
     // these commands are seperate for now, but it would be faster if bits could be done at the same time
     // we should check how stable the robot is when changing lift positions before we try anything though
-    if (armPosition < 180){
-      addSequential(new TurnCameraForward());
-    } 
-    else
-    {
-      addSequential(new TurnCameraReverse());
-      approachAngle = approachAngle + 180; 
-    }
+    // if (armPosition < 180){
+    //   addSequential(new TurnCameraForward());
+    // } 
+    // else
+    // {
+    //   addSequential(new TurnCameraReverse());
+    //   approachAngle = approachAngle + 180; 
+    // }
     addSequential(new SetClawBool(isHatchPosition));
     // System.out.println("approach angle set to" + approachAngle);
     // Robot.driveTrain.targetAngle = approachAngle;

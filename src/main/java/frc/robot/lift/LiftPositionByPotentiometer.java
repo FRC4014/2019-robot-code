@@ -7,8 +7,12 @@ import frc.robot.RobotMap;
 
 public class LiftPositionByPotentiometer extends Command {
 
-  private double vp; //guesses, modify these
+  private double vp;
+  private double vi;
+  private double verticalintegral;
   private double ap;
+  private double ai;
+  private double armIntegral;
   private double wp;
 
   private Potentiometer vertical;
@@ -34,7 +38,7 @@ public class LiftPositionByPotentiometer extends Command {
   public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical,boolean notVertical) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
-    this.wrist = RobotMap.LIFT_WRIST_POTENTIOMETER;
+    this.wrist = RobotMap.LIFT_ARM_POTENTIOMETER; //should be wrist, this is a bodge
     this.setPointArm = setPointArm;
     this.setPointVertical = setPointVertical + 1;
     this.setPointWrist = setPointWrist;
@@ -46,7 +50,12 @@ public class LiftPositionByPotentiometer extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    vp = ap = wp = .5;
+    vp = wp = .5;
+    ap = 4.7;
+    ai = .01;
+    vi = .4;
+    armIntegral = 0;
+    verticalintegral = 0;
     toleranceArm = 1;
     toleranceWrist = 2;
     toleranceVertical = 1;
@@ -65,21 +74,23 @@ public class LiftPositionByPotentiometer extends Command {
   protected void execute() {
     wRcw = 0;
     double minA,maxA;
-    minA = .10;
-    maxA = 1;
+    minA = .00;
+    maxA = .6;
     double errorVertical = setPointVertical - vertical.get();
+    armIntegral = (verticalintegral * .6) + errorVertical;
     double errorArm = setPointArm - arm.get() + (2 * Math.signum(180 - setPointArm));
+    armIntegral = (armIntegral * .8) + errorArm;
     double errorWrist = setPointWrist - wrist.get();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
-    acceptableWrist = Math.abs(errorWrist) < toleranceWrist;
+    acceptableWrist = true;
     if (!acceptableArm){
       // aRcw = (ap * errorArm)/-5;
-      aRcw = ((((maxA-minA)/315)*errorArm));
+      aRcw = ((((maxA-minA)/315)*errorArm) * ap) + (armIntegral * ai);
       aRcw = Math.signum(aRcw) * Math.min(maxA, Math.max(minA, Math.abs(aRcw) + minA));
     }
     if (!acceptableVertical){
-      vRcw = (vp * errorVertical)/8;
+      vRcw = ((vp * errorVertical)/7) + (verticalintegral * vi);
       vRcw = Math.signum(vRcw) * Math.min(.7, Math.abs(vRcw));
     }
     if (!acceptableWrist){
@@ -87,10 +98,12 @@ public class LiftPositionByPotentiometer extends Command {
     }
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);
-    Robot.lift.moveWrist(wRcw);
+    // Robot.lift.moveWrist(wRcw);
     System.out.println("arm error: " + errorArm + " aRcw= " + aRcw);
+    System.out.println("arm integral= " + (armIntegral * ai));
     System.out.println("vertical error: " + errorVertical + " vRcw= " + vRcw);
-    System.out.println("wrist error: " + errorWrist + " wRcw= " + wRcw);
+    System.out.println("vertical integral= " + (verticalintegral * vi));
+    // System.out.println("wrist error: " + errorWrist + " wRcw= " + wRcw);
   }
 
   // Make this return true when this Command no longer needs to run execute()

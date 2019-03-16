@@ -17,10 +17,10 @@ public class OI {
   public Button limeLightButton = new JoystickButton(driverJoystick, 4);
   public Button hatchInButton = new JoystickButton(driverJoystick, 5);
   public Button hatchOutButton = new JoystickButton(driverJoystick, 6);
-  public Button justForwardButton = new JoystickButton(driverJoystick, 7);
-  public Button justBackButton = new JoystickButton(driverJoystick, 8);
-  public Button raiseLowButton = new JoystickButton(driverJoystick, 11);
-  public Button raiseHighButton = new JoystickButton(driverJoystick, 12);
+  public Button justForwardButton = new JoystickButton(driverJoystick, 11);
+  public Button justBackButton = new JoystickButton(driverJoystick, 12);
+  public Button raiseLowButton = new JoystickButton(driverJoystick, 7);
+  public Button raiseHighButton = new JoystickButton(driverJoystick, 8);
 
   // public Button frontleftButton = new JoystickButton(driverJoystick, 7);
   // public Button frontrightButton = new JoystickButton(driverJoystick, 8);
@@ -58,6 +58,8 @@ public class OI {
   public Button MidCargo270Button = new JoystickButton(launchpad1, 15);
   public Button HighCargo90Button = new JoystickButton(launchpad2, 7);
   public Button HighCargo270Button = new JoystickButton(launchpad1, 8);
+
+  public Button drivePositionButton = new JoystickButton(launchpad2, 9);
 
   // public Button DoneButton = new JoystickButton(launchpad2, 1);
 

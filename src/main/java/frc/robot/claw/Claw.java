@@ -34,13 +34,16 @@ public class Claw extends Subsystem {
     Robot.oi.hatchOutButton.whenPressed(new HatchOutput());
   }
   public void cargoIntake(){
-    RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,-1);
+    // RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,-1);
+    RobotMap.CLAW_MOTOR.set(-1);
   }
   public void cargoOutput(){
-    RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,.7);
+    // RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,.5);
+    RobotMap.CLAW_MOTOR.set(.5);
   }
   public void cargoHold(){
-    RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,0);
+    // RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,0);
+    RobotMap.CLAW_MOTOR.set(0);
   }
   public void hatchIntake(){
     // RobotMap.CLAW_SOLENOID.set(DoubleSolenoid.Value.kForward);

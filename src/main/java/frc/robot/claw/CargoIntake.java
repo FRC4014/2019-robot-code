@@ -35,7 +35,7 @@ public class CargoIntake extends Command {
   @Override
   protected boolean isFinished() {
     //TODO: set safty current int to the channel wired to the claw bag motor
-    return (System.currentTimeMillis() - initTimeStamp > 10000 || Robot.oi.holdButton.get() || RobotMap.PDP.getCurrent(0) >= 53);
+    return ( !Robot.oi.intakeButton.get() || RobotMap.PDP.getCurrent(0) >= 53);
   }
 
   // Called once after isFinished returns true
