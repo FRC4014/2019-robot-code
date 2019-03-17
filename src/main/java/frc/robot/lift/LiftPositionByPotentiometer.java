@@ -32,10 +32,11 @@ public class LiftPositionByPotentiometer extends Command {
   private double setPointWrist;
   private boolean justVertical;
   private boolean notVertical;
+  private boolean getFromDT;
   double vRcw, aRcw, wRcw;
 
 
-  public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical,boolean notVertical) {
+  public LiftPositionByPotentiometer(double setPointVertical, double setPointArm, double setPointWrist, boolean justVertical,boolean notVertical, boolean getFromDT) {
     this.vertical = RobotMap.LIFT_VERTICAL_POTENTIOMETER;
     this.arm = RobotMap.LIFT_ARM_POTENTIOMETER;
     this.wrist = RobotMap.LIFT_ARM_POTENTIOMETER; //should be wrist, this is a bodge
@@ -44,6 +45,7 @@ public class LiftPositionByPotentiometer extends Command {
     this.setPointWrist = setPointWrist;
     this.justVertical = justVertical;
     this.notVertical = notVertical;
+    this.getFromDT = getFromDT;
     requires(Robot.lift);
   }
 
@@ -60,6 +62,11 @@ public class LiftPositionByPotentiometer extends Command {
     toleranceWrist = 2;
     toleranceVertical = 1;
     acceptableArm = acceptableWrist = acceptableVertical = false;
+    if (getFromDT){
+      setPointArm = Robot.driveTrain.getArm();
+      setPointVertical = Robot.driveTrain.getVertical();
+      setPointWrist = Robot.driveTrain.getWrist();
+    }
     if (justVertical){
       setPointArm = arm.get();
       setPointWrist = wrist.get();
@@ -67,6 +74,7 @@ public class LiftPositionByPotentiometer extends Command {
     if (notVertical){
       setPointVertical = vertical.get();
     }
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -99,10 +107,10 @@ public class LiftPositionByPotentiometer extends Command {
     Robot.lift.moveArm(aRcw);
     Robot.lift.moveVertical(vRcw);
     // Robot.lift.moveWrist(wRcw);
-    System.out.println("arm error: " + errorArm + " aRcw= " + aRcw);
-    System.out.println("arm integral= " + (armIntegral * ai));
-    System.out.println("vertical error: " + errorVertical + " vRcw= " + vRcw);
-    System.out.println("vertical integral= " + (verticalintegral * vi));
+    // System.out.println("arm error: " + errorArm + " aRcw= " + aRcw);
+    // System.out.println("arm integral= " + (armIntegral * ai));
+    // System.out.println("vertical error: " + errorVertical + " vRcw= " + vRcw);
+    // System.out.println("vertical integral= " + (verticalintegral * vi));
     // System.out.println("wrist error: " + errorWrist + " wRcw= " + wRcw);
   }
 

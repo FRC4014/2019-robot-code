@@ -26,7 +26,8 @@ public class PrintPosition extends Command {
   @Override
   protected void execute() {
     System.out.println("Vertical: " + RobotMap.LIFT_VERTICAL_POTENTIOMETER.get() +
-    " Arm: " + RobotMap.LIFT_ARM_POTENTIOMETER.get());
+    " Arm: " + RobotMap.LIFT_ARM_POTENTIOMETER.get()
+    + " Wrist: " + RobotMap.LIFT_WRIST_POTENTIOMETER.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()

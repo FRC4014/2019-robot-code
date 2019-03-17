@@ -8,13 +8,21 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
+import frc.robot.lift.GoToPosition;
+import frc.robot.lift.LiftPositionByPotentiometer;
 
 public class AutonomousGo extends CommandGroup {
   /**
    * Add your docs here.
    */
   public AutonomousGo() {
+    addSequential(new LiftPositionByPotentiometer(22 , 1 , 90, true,false,false),1);
+    addSequential(new LiftPositionByPotentiometer(22, 1, 90, false,true,false),1);
     addSequential(new AlignByVision());
+    addSequential(new LiftPositionByPotentiometer(22, 1, 90, false,true,true),1);
+    addSequential(new LiftPositionByPotentiometer(22, 1, 90, false,false,true));
+
     //TODO add deploy code
   }
 }

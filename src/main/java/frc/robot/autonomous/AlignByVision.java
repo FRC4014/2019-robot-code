@@ -22,7 +22,7 @@ public class AlignByVision extends Command {
   private double targetAngle;
   private double heightDifference;
   private double cameraAngle = 0;
-  private double xDifference = 9.375;
+  private double xDifference = -7.875;
   private long timeCheck;
   private double prevX;
 
@@ -39,7 +39,7 @@ public class AlignByVision extends Command {
     System.out.println("target angle is " + targetAngle);
     System.out.println("height difference is " + heightDifference);
     p = 1;
-    i = 0;
+    i = .6;
     d = 0;
     for (double j = targetAngle; Math.abs(j - navX.getAngle()) >= 180; ){
       j = j + (360 * Math.signum(navX.getAngle()));
@@ -54,7 +54,7 @@ public class AlignByVision extends Command {
   protected void execute() {
     double correctionAngle = targetAngle - navX.getAngle();
     double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
-    double correctiony = 30 - limeLight.yOffset(heightDifference,cameraAngle);
+    double correctiony = 70 - limeLight.yOffset(heightDifference,cameraAngle);
     if (limeLight.yOffset(heightDifference,cameraAngle) == 0){
       correctiony = 0;
     }
@@ -66,21 +66,21 @@ public class AlignByVision extends Command {
     double yRCW = 0;
 
     if (!acceptableAngle){
-      angleIntegral += correctionAngle * .02; // .02 is the typical timing for IterativeRobot
+      angleIntegral = (angleIntegral*.6) + correctionAngle; // .02 is the typical timing for IterativeRobot
       double derivative = (correctionAngle - previousAngleError) / .02; // last years code uses division, but this maybe should be multiplication?
       angleRCW = (p * correctionAngle * correctionAngleSign) + (i * angleIntegral) + (d * derivative);
       angleRCW = angleRCW / 45;
-      double modAngleRCW = Math.max(.25, Math.min(Math.abs(angleRCW), 1));
+      double modAngleRCW = Math.max(.1, Math.min(Math.abs(angleRCW), 1));
       angleRCW = angleRCW < 0 ? -modAngleRCW : modAngleRCW;
       timeCheck = System.currentTimeMillis();
     }
 
     if (!acceptableX){
-      xIntegral += correctionX * .02;
+      xIntegral = (xIntegral * .6) + correctionX;
       double derivative = (correctionX - previousXError) / .02;
-      xRCW = (p * correctionX) /*+ (i * xIntegral) + (d * derivative)*/;
+      xRCW = (p * correctionX) + (i * xIntegral) + (d * derivative);
       xRCW = xRCW / -1;
-      double modxRCW = Math.max(.4, Math.min(Math.abs(xRCW), 1));
+      double modxRCW = Math.max(.1, Math.min(Math.abs(xRCW), 1));
       xRCW = xRCW < 0 ? -modxRCW : modxRCW;
       timeCheck = System.currentTimeMillis();
     }

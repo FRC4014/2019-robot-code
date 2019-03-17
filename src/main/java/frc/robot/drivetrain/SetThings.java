@@ -13,9 +13,15 @@ import frc.robot.Robot;
 public class SetThings extends Command {
   private double height;
   private double angle;
-  public SetThings(double h, double a) {
+  private double v;
+  private double ar;
+  private double w;
+  public SetThings(double h, double a, double v, double ar, double w) {
     this.height = h;
     this.angle = a;
+    this.v = v;
+    this.ar = ar;
+    this.w = w;
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +29,7 @@ public class SetThings extends Command {
   protected void initialize() {
     Robot.driveTrain.setAngle(angle);
     Robot.driveTrain.setHeight(height);
+    Robot.driveTrain.setLift(v, ar, w);
   }
 
 

@@ -14,6 +14,9 @@ public class DriveTrain extends Subsystem {
 
   public double targetAngle;
   public double targetHeightDifference;
+  public double targetVertical;
+  public double targetArm;
+  public double targetWrist;
 
   @Override
   public void initDefaultCommand() {
@@ -22,7 +25,8 @@ public class DriveTrain extends Subsystem {
 
   public void drive(Joystick joystick, Double gyroAngle){
     RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(),  joystick.getY(), -joystick.getZ());
-    // System.out.println(targetAngle +" "+ targetHeightDifference);s
+    System.out.println("TAngle: " + targetAngle +" THeightDiff: "+ targetHeightDifference
+    + " vert: " + targetVertical + " arm: " + targetArm + " wrist: " + targetWrist);
     // System.out.println(RobotMap.DRIVE_TRAIN_ENCODER.getDistance());
     // RobotMap.DRIVE_TRAIN_MECANUM.driveCartesian(-joystick.getX(), joystick.getY(), -joystick.getZ(), -gyroAngle );
   }
@@ -60,5 +64,19 @@ public class DriveTrain extends Subsystem {
   }
   public double getHeight(){
     return targetHeightDifference;
+  }
+  public void setLift(double vert, double arm, double wrist){
+    targetVertical = vert;
+    targetArm = arm;
+    targetWrist = wrist;
+  }
+  public double getVertical(){
+    return targetVertical;
+  }
+  public double getArm(){
+    return targetArm;
+  }
+  public double getWrist(){
+    return targetWrist;
   }
 }

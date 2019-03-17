@@ -12,8 +12,9 @@ public class GoToPosition extends CommandGroup {
     //   // the arm needs to flip arounds, so we should raise the lift beacause I guess we have to?
 
     // }
-    addSequential(new LiftPositionByPotentiometer(22 , arm , wrist, true,false),1);
-    addSequential(new LiftPositionByPotentiometer(22, arm, wrist, false,true),1);
-    addSequential(new LiftPositionByPotentiometer(vertical , arm , wrist, false,false));
+    System.out.println("position target is: " + vertical + " " + arm + " " + wrist);
+    addSequential(new LiftPositionByPotentiometer(22 , arm , wrist, true,false,false),1);
+    addSequential(new LiftPositionByPotentiometer(22, arm, wrist, false,true,false),1);
+    addSequential(new LiftPositionByPotentiometer(vertical , arm , wrist, false,false,false));
   }
 }

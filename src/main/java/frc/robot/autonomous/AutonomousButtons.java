@@ -12,7 +12,7 @@ public class AutonomousButtons {
         // Robot.oi.driveButton5.whenPressed(new TurnCameraReverse());
         Robot.oi.hatchInButton.whenPressed(new PrintPosition());
 
-        // Robot.oi.gButton.whenPressed(new AutonomousGo());
+        Robot.oi.gButton.whenPressed(new AutonomousGo());
         Robot.oi.lowHatch0Button.whenPressed(new AutonomousPrepare(0, 81.5, 38, 0, true,true)); 
         Robot.oi.LowHatch2875Button.whenPressed(new AutonomousPrepare(0, 81.5, 38, 28.75, true,true));
         Robot.oi.LowHatch90Button.whenPressed(new AutonomousPrepare(0, 81.5, 38, 90, true,true));
