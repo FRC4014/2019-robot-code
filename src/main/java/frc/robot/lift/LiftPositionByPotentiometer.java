@@ -53,8 +53,8 @@ public class LiftPositionByPotentiometer extends Command {
   @Override
   protected void initialize() {
     vp = wp = .5;
-    ap = 4.7;
-    ai = .01;
+    ap = 4.95;
+    ai = .02;
     vi = .4;
     armIntegral = 0;
     verticalintegral = 0;

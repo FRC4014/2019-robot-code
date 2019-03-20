@@ -29,7 +29,7 @@ public class DriveByJoystick extends Command {
       Robot.driveTrain.driveStraight(-.4);
     }
     else if (Robot.oi.justBackButton.get()){
-      Robot.driveTrain.driveStraight(.4);
+      // Robot.driveTrain.driveStraight(.4);
     } else {
       Robot.driveTrain.drive(Robot.oi.driverJoystick,navX.getAngle());
     }
