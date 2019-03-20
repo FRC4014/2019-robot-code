@@ -8,24 +8,30 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.drivetrain.SetThings;
+import frc.robot.lift.LiftPositionByPotentiometer;
 
 public class Sandstorm extends CommandGroup {
   /**
    * Add your docs here.
    */
   public Sandstorm(int position) {
-    if (position == 2){
-      addSequential(new DriveByDistance(.8,50));
-      addSequential(new AutonomousPrepare(24,90,40,90,false,true));
+ if (position == 2){
+      addSequential(new DriveByDistance(.8,-50));
+      addSequential(new SetThings(-17.75, 0, 24, 90, 40));
     } else {
-      addSequential(new DriveByDistance(.8, 192));
-      addSequential(new AutonomousPrepare(24,90,40,90,false,true));
+      addSequential(new LiftPositionByPotentiometer(22 , 81.5 , 38, true,false,false),1);
+      addSequential(new LiftPositionByPotentiometer(22, 81.5, 38, false,true,false),1);
+      addSequential(new LiftPositionByPotentiometer(0, 81.5, 38, false,false,false),1);  
+      addSequential(new DriveByDistance(.8, -192));
       if (position == 1){
+        addSequential(new SetThings(-17.75, -90, 24, 90, 40));
         addSequential(new Pivot(-90));
       } else if (position == 3){
+        addSequential(new SetThings(-17.75, 90, 24, 90, 40));
         addSequential(new Pivot(90));
       }
     }
-    // addSequential(new AutonomousGo());
+    addSequential(new AutonomousGo());
   }
 }

@@ -87,6 +87,7 @@ public class RobotMap {
     BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
 
     NAVX.reset();
+    NAVX.setAngleAdjustment(180);
     DRIVE_TRAIN_ENCODER.reset();
     DRIVE_TRAIN_ENCODER.setDistancePerPulse(0.00894454);
     // DRIVE_TRAIN_ENCODER.setDistancePerPulse(1);
