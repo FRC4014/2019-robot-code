@@ -22,7 +22,8 @@ public class Sandstorm extends CommandGroup {
     } else {
       addSequential(new LiftPositionByPotentiometer(22 , 81.5 , 38, true,false,false),1);
       addSequential(new LiftPositionByPotentiometer(22, 81.5, 38, false,true,false),1);
-      addSequential(new LiftPositionByPotentiometer(0, 81.5, 38, false,false,false),1);  
+      addSequential(new LiftPositionByPotentiometer(0, 81.5, 38, false,false,false),1); 
+      addParallel(new LiftPositionByPotentiometer(0, 81.5, 38, false,false,false));   
       addSequential(new DriveByDistance(.8, -192));
       if (position == 1){
         addSequential(new SetThings(-17.75, -90, 24, 90, 40));

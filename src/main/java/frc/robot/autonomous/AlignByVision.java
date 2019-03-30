@@ -21,7 +21,7 @@ public class AlignByVision extends Command {
   private double correctionAngleSign = 1;
   private double targetAngle;
   private double heightDifference;
-  private double cameraAngle = 0;
+  private double cameraAngle = -15;
   private double xDifference = -7.875;
   private long timeCheck;
   private double prevX;

@@ -10,6 +10,8 @@ public class AutonomousButtons {
         Robot.oi.limeLightButton.whenPressed(new SwitchView());
         Robot.oi.justBackButton.whenPressed(new PrintPosition());
 
+        Robot.oi.DriveOffPositionButton.whenPressed(new AutonomousPrepare(0, 100, 110, 0, true, true));
+
         Robot.oi.gButton.whenPressed(new AutonomousGo());
         Robot.oi.lowHatch0Button.whenPressed(new AutonomousPrepare(.8, 61, 99, 0, true,true)); 
         Robot.oi.LowHatch2875Button.whenPressed(new AutonomousPrepare(.8, 61, 99, 28.75, true,true));
@@ -23,10 +25,10 @@ public class AutonomousButtons {
         Robot.oi.MidHatch15125Button.whenPressed(new AutonomousPrepare(24, 72, 85, 151.25, true,true));
         Robot.oi.MidHatch20875Button.whenPressed(new AutonomousPrepare(24,  72, 85, 208.75, true,true));
         Robot.oi.MidHatch33125Button.whenPressed(new AutonomousPrepare(24, 72, 85, 331.25, true,true));
-        Robot.oi.HighHatch2875Button.whenPressed(new AutonomousPrepare(25, 135, 12, 28.75, true,true));
-        Robot.oi.HighHatch15125Button.whenPressed(new AutonomousPrepare(25, 135, 12, 151.25, true,true));
-        Robot.oi.HighHatch20875Button.whenPressed(new AutonomousPrepare(25, 135, 12, 208.75, true,true));
-        Robot.oi.HighHatch33125Button.whenPressed(new AutonomousPrepare(25, 135, 12, 331.25, true,true));
+        Robot.oi.HighHatch2875Button.whenPressed(new AutonomousPrepare(25, 135, 20, 28.75, true,true));
+        Robot.oi.HighHatch15125Button.whenPressed(new AutonomousPrepare(25, 135, 20, 151.25, true,true));
+        Robot.oi.HighHatch20875Button.whenPressed(new AutonomousPrepare(25, 135, 20, 208.75, true,true));
+        Robot.oi.HighHatch33125Button.whenPressed(new AutonomousPrepare(25, 135, 20, 331.25, true,true));
 
         Robot.oi.GrabCargoButton.whenPressed(new AutonomousPrepare(9.8,25,100,0,false,true));
         Robot.oi.LowCargo0Button.whenPressed(new AutonomousPrepare(24,47,133,0,false,true));
