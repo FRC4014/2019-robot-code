@@ -52,11 +52,11 @@ public class LiftPositionByPotentiometer extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    wp = .5;
-    ap = 1;
-    ai = .02;
+    wp = .4;
+    ap = 1.2;
+    ai = .03;
     vp = .25;
-    vi = .4;
+    vi = .02;
     armIntegral = 0;
     verticalintegral = 0;
     toleranceArm = 1;
@@ -86,9 +86,9 @@ public class LiftPositionByPotentiometer extends Command {
     minA = .00;
     maxA = .4;
     double errorVertical = setPointVertical - vertical.get();
-    armIntegral = (verticalintegral * .6) + errorVertical;
+    verticalintegral = (verticalintegral * .6) + errorVertical;
     double errorArm = setPointArm - arm.get() + (2 * Math.signum(180 - setPointArm));
-    armIntegral = (armIntegral * .8) + errorArm;
+    armIntegral = (armIntegral * .4) + errorArm;
     double errorWrist = setPointWrist - wrist.get();
     acceptableArm = Math.abs(errorArm) < toleranceArm;
     acceptableVertical = Math.abs(errorVertical) < toleranceVertical;
@@ -105,7 +105,7 @@ public class LiftPositionByPotentiometer extends Command {
       if (errorVertical < 0) {
         vp = .1;
       } else {
-        vp = .4;
+        vp = .55;
       }
       vRcw = ((vp * errorVertical)/7) + (verticalintegral * vi);
       vRcw = Math.signum(vRcw) * Math.min(.7, Math.abs(vRcw));

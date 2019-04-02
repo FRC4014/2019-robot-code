@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 
   public Joystick driverJoystick = new Joystick(0);
-  public Button intakeButton = new JoystickButton(driverJoystick, 1);
-  public Button outpuButton = new JoystickButton(driverJoystick, 2);
+  public Button intakeButton = new JoystickButton(driverJoystick, 2);
+  public Button outpuButton = new JoystickButton(driverJoystick, 1);
   public Button DriveOffPositionButton = new JoystickButton(driverJoystick, 3);
   public Button limeLightButton = new JoystickButton(driverJoystick, 4);
   public Button hatchInButton = new JoystickButton(driverJoystick, 5);
   public Button hatchOutButton = new JoystickButton(driverJoystick, 6);
   public Button justForwardButton = new JoystickButton(driverJoystick, 11);
-  public Button justBackButton = new JoystickButton(driverJoystick, 12);
+  public Button printPositionButton = new JoystickButton(driverJoystick, 12);
   public Button raiseLowButton = new JoystickButton(driverJoystick, 7);
   public Button raiseHighButton = new JoystickButton(driverJoystick, 8);
 

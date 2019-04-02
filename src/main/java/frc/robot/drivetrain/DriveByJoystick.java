@@ -28,9 +28,7 @@ public class DriveByJoystick extends Command {
     if(Robot.oi.justForwardButton.get()){
       Robot.driveTrain.driveStraight(-.4);
     }
-    else if (Robot.oi.justBackButton.get()){
-      // Robot.driveTrain.driveStraight(.4);
-    } else {
+     else {
       Robot.driveTrain.drive(Robot.oi.driverJoystick,navX.getAngle());
     }
     // if(Robot.oi.frontleftButton.get()){

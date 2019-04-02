@@ -35,11 +35,11 @@ public class Claw extends Subsystem {
   }
   public void cargoIntake(){
     // RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,-1);
-    RobotMap.CLAW_MOTOR.set(-1);
+    RobotMap.CLAW_MOTOR.set(.7);
   }
   public void cargoOutput(){
     // RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,.5);
-    RobotMap.CLAW_MOTOR.set(.5);
+    RobotMap.CLAW_MOTOR.set(-1);
   }
   public void cargoHold(){
     // RobotMap.CLAW_MOTOR.set(ControlMode.PercentOutput,0);
