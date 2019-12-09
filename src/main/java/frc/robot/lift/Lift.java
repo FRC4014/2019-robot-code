@@ -19,8 +19,8 @@ public class Lift extends Subsystem {
   
   // we probably need to add max and min speeds, especially the arm motor
   public void moveVertical(double movement){
-    // RobotMap.LIFT_VERTICAL_MOTOR.set(ControlMode.PercentOutput,movement);
-    RobotMap.LIFT_VERTICAL_MOTOR.set(movement);
+    RobotMap.LIFT_VERTICAL_MOTOR.set(ControlMode.PercentOutput,movement);
+    // RobotMap.LIFT_VERTICAL_MOTOR.set(movement);
   }
   public void moveArm(double movement){
     RobotMap.LIFT_ARM_MOTOR.set(movement);
@@ -30,8 +30,8 @@ public class Lift extends Subsystem {
   }
   public void stopMoving(){
     RobotMap.LIFT_ARM_MOTOR.set(0);
-    // RobotMap.LIFT_VERTICAL_MOTOR.set(Co ntrolMode.PercentOutput, .2);
-    RobotMap.LIFT_VERTICAL_MOTOR.set(.2);
+    RobotMap.LIFT_VERTICAL_MOTOR.set(ControlMode.PercentOutput, .2);
+    // RobotMap.LIFT_VERTICAL_MOTOR.set(.2);
     RobotMap.LIFT_WRIST_MOTOR.set(0);
   }
 }

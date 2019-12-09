@@ -22,7 +22,7 @@ public class AlignByVision extends Command {
   private double targetAngle;
   private double heightDifference;
   private double cameraAngle = -15;
-  private double xDifference = -7.875;
+  private double xDifference;
   private long timeCheck;
   private double prevX;
 
@@ -36,6 +36,7 @@ public class AlignByVision extends Command {
   protected void initialize() {
     this.targetAngle = -1* Robot.driveTrain.getAngle();
     this.heightDifference = Robot.driveTrain.getHeight();
+    this.xDifference = Robot.driveTrain.getX();
     System.out.println("target angle is " + targetAngle);
     System.out.println("height difference is " + heightDifference);
     p = 1;
@@ -54,13 +55,14 @@ public class AlignByVision extends Command {
   protected void execute() {
     double correctionAngle = targetAngle - navX.getAngle();
     double correctionX = limeLight.xOffset(heightDifference,cameraAngle,xDifference);
-    double correctiony = 70 - limeLight.yOffset(heightDifference,cameraAngle);
+    double correctiony = 35 - limeLight.yOffset(heightDifference,cameraAngle);
     if (limeLight.yOffset(heightDifference,cameraAngle) == 0){
       correctiony = 0;
     }
     acceptableAngle = Math.abs(correctionAngle) < angleTolerance;
     acceptableX = Math.abs(correctionX) < xTolerance;
-    acceptabley = Math.abs(correctiony) < 5;
+    // acceptabley = Math.abs(correctiony) < 5;
+    acceptabley = true;
     double angleRCW = 0;
     double xRCW = 0;
     double yRCW = 0;
@@ -103,7 +105,7 @@ public class AlignByVision extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((acceptableAngle && acceptableX && acceptabley && System.currentTimeMillis() - timeCheck > 500) || Robot.oi.lowHatch0Button.get());
+    return ((acceptableAngle && acceptableX && acceptabley && System.currentTimeMillis() - timeCheck > 500) || Robot.oi.limeLightButton.get());
   }
 
   // Called once after isFinished returns true

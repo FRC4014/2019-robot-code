@@ -52,16 +52,16 @@ public class LiftPositionByPotentiometer extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    wp = .4;
+    wp = .3;
     ap = 1.2;
-    ai = .03;
+    ai = .015;
     vp = .25;
     vi = .02;
     armIntegral = 0;
     verticalintegral = 0;
-    toleranceArm = 1;
+    toleranceArm = .5;
     toleranceWrist = 2;
-    toleranceVertical = 1;
+    toleranceVertical = .1;
     acceptableArm = acceptableWrist = acceptableVertical = false;
     if (getFromDT){
       setPointArm = Robot.driveTrain.getArm();
@@ -97,7 +97,7 @@ public class LiftPositionByPotentiometer extends Command {
       // aRcw = (ap * errorArm)/-5;
       if (errorArm < 0){
         maxA = .2;
-      } else { maxA = .6;}
+      } else { maxA = .5;}
       aRcw = ((((maxA-minA)/315)*errorArm) * ap) + (armIntegral * ai);
       aRcw = Math.signum(aRcw) * Math.min(maxA, Math.max(minA, Math.abs(aRcw) + minA));
     }
@@ -105,7 +105,7 @@ public class LiftPositionByPotentiometer extends Command {
       if (errorVertical < 0) {
         vp = .1;
       } else {
-        vp = .55;
+        vp = .2;
       }
       vRcw = ((vp * errorVertical)/7) + (verticalintegral * vi);
       vRcw = Math.signum(vRcw) * Math.min(.7, Math.abs(vRcw));
@@ -120,8 +120,8 @@ public class LiftPositionByPotentiometer extends Command {
     System.out.println("arm integral= " + (armIntegral * ai));
     System.out.println("vertical error: " + errorVertical + " vRcw= " + vRcw);
     System.out.println("vertical integral= " + (verticalintegral * vi));
-    // System.out.println("wrist error: " + errorWrist + " wRcw= " + wRcw);
-    // System.out.println("wrist position: " + wrist.get());
+    System.out.println("wrist error: " + errorWrist + " wRcw= " + wRcw);
+    System.out.println("arm amps: " + RobotMap.PDP.getCurrent(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()

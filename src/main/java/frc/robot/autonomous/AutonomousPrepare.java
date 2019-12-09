@@ -35,11 +35,19 @@ public class AutonomousPrepare extends CommandGroup {
     // Robot.driveTrain.targetAngle = approachAngle;
     if (isTargetLow){
       // Robot.driveTrain.targetHeightDifference = -17.75;
-      addSequential(new SetThings(-17.75, approachAngle,verticalPosition,armPosition,wristPosition));
+      if (isHatchPosition){
+        addSequential(new SetThings(-17.75, approachAngle,verticalPosition,armPosition,wristPosition, -3.875));
+      } else {
+        addSequential(new SetThings(-17.75, approachAngle,verticalPosition,armPosition,wristPosition, -7.875));
+      }
       
     } else {
       // Robot.driveTrain.targetHeightDifference = -9.75;
-      addSequential(new SetThings(-9.75, approachAngle, verticalPosition,armPosition,wristPosition));
+      if (isHatchPosition){
+        addSequential(new SetThings(-9.75, approachAngle, verticalPosition,armPosition,wristPosition, -3.875));
+      } else {
+        addSequential(new SetThings(-9.75, approachAngle, verticalPosition,armPosition,wristPosition, -7.875));
+      }
     }
     addSequential(new GoToPosition(verticalPosition, armPosition, wristPosition));
   }

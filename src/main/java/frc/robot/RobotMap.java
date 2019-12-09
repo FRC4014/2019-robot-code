@@ -54,9 +54,9 @@ public class RobotMap {
   public static final AHRS NAVX = new AHRS(SPI.Port.kMXP);
   
   public static final Compressor COMPRESSOR = new Compressor(1);
-  public static final DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(2, 5);//4,3
+  public static final DoubleSolenoid FRONT_HIGH_SOLENOID = new DoubleSolenoid(4, 3);//4,3
   public static final DoubleSolenoid BACK_HIGH_SOLENOID = new DoubleSolenoid(7, 0);//7,0
-  public static final DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(4, 3);//2,5
+  public static final DoubleSolenoid FRONT_LOW_SOLENOID = new DoubleSolenoid(2, 5);//2,5
   public static final DoubleSolenoid BACK_LOW_SOLENOID = new DoubleSolenoid(1, 6);//1,6
 
 //   public static final Ultrasonic FRONT_RIGHT_ULTRASONIC = new Ultrasonic(7, 6);
@@ -64,17 +64,17 @@ public class RobotMap {
 //   public static final Ultrasonic BACK_RIGHT_ULTRASONIC = new Ultrasonic(3, 4);
 //   public static final Ultrasonic BACK_LEFT_ULTRASONIC = new Ultrasonic(5, 8);
 
-  public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 46, -2);
-  public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(1, -1200, 1208);//-1233
-  public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(2, 3600, -1253);
-  // public static final VictorSPX LIFT_VERTICAL_MOTOR = new VictorSPX(CAN.LIFT_VERTICAL_MOTOR);
-  public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
+  public static final Potentiometer LIFT_VERTICAL_POTENTIOMETER = new AnalogPotentiometer(0, 46, -5);
+  public static final Potentiometer LIFT_ARM_POTENTIOMETER = new AnalogPotentiometer(1, -1200, 694);//-1233
+  public static final Potentiometer LIFT_WRIST_POTENTIOMETER = new AnalogPotentiometer(2, 3600, -1250);
+  public static final VictorSPX LIFT_VERTICAL_MOTOR = new VictorSPX(CAN.LIFT_VERTICAL_MOTOR);
+  // public static final WPI_TalonSRX LIFT_VERTICAL_MOTOR = new WPI_TalonSRX(CAN.LIFT_VERTICAL_MOTOR);
   public static final WPI_TalonSRX LIFT_ARM_MOTOR = new WPI_TalonSRX(CAN.LIFT_ARM_MOTOR);
   public static final WPI_TalonSRX LIFT_WRIST_MOTOR = new WPI_TalonSRX(CAN.LIFT_WRIST_MOTOR);
 
   public static DoubleSolenoid CLAW_SOLENOID = new DoubleSolenoid(1, 0, 7); //that first 1 should make this look for a pcm with an id of 1 (default id is 0)
-  // public static VictorSPX CLAW_MOTOR = new VictorSPX(CAN.CLAW_MOTOR);
-  public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
+  public static VictorSPX CLAW_MOTOR = new VictorSPX(CAN.CLAW_MOTOR);
+  // public static WPI_TalonSRX CLAW_MOTOR = new WPI_TalonSRX(CAN.CLAW_MOTOR);
 
 // public static Servo CAMERA_SERVO = new Servo(0);
 
@@ -87,7 +87,7 @@ public class RobotMap {
     BACK_LOW_SOLENOID.set(DoubleSolenoid.Value.kReverse);
 
     NAVX.reset();
-    NAVX.setAngleAdjustment(180);
+    // NAVX.setAngleAdjustment(180);
     DRIVE_TRAIN_ENCODER.reset();
     DRIVE_TRAIN_ENCODER.setDistancePerPulse(0.00894454);
     // DRIVE_TRAIN_ENCODER.setDistancePerPulse(1);

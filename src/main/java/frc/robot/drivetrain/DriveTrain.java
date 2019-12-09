@@ -14,6 +14,7 @@ public class DriveTrain extends Subsystem {
 
   public double targetAngle;
   public double targetHeightDifference;
+  public double targetXDifference;
   public double targetVertical;
   public double targetArm;
   public double targetWrist;
@@ -64,6 +65,12 @@ public class DriveTrain extends Subsystem {
   }
   public double getHeight(){
     return targetHeightDifference;
+  }
+  public void SetX(double X){
+    targetXDifference = X;
+  }
+  public double getX(){
+    return targetXDifference;
   }
   public void setLift(double vert, double arm, double wrist){
     targetVertical = vert;
